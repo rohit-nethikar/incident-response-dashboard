@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Color tokens from the reference dataviz palette. Light values under :root,
+  dark values under .dark (next-themes toggles this class on <html>) — never
+  an automatic OS-only flip, per the palette's "dark mode is selected"
+  guidance. Severity colors are the fixed status palette and are never reused
+  for anything else (e.g. team/source categorical colors use --series-*).
+*/
+:root {
+  color-scheme: light;
+  --surface-1: #fcfcfb;
+  --surface-raised: #ffffff;
+  --plane: #f9f9f7;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #898781;
+  --border: rgba(11, 11, 11, 0.1);
+  --gridline: #e1e0d9;
+
+  --severity-critical: #d03b3b;
+  --severity-high: #ec835a;
+  --severity-medium: #fab219;
+  --severity-low: #0ca30c;
+  --severity-info: #898781;
+
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+}
+
+.dark {
+  color-scheme: dark;
+  --surface-1: #1a1a19;
+  --surface-raised: #232322;
+  --plane: #0d0d0d;
+  --text-primary: #ffffff;
+  --text-secondary: #c3c2b7;
+  --text-muted: #898781;
+  --border: rgba(255, 255, 255, 0.1);
+  --gridline: #2c2c2a;
+
+  --severity-critical: #d03b3b;
+  --severity-high: #ec835a;
+  --severity-medium: #fab219;
+  --severity-low: #0ca30c;
+  --severity-info: #898781;
+
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+}
+
+body {
+  background-color: var(--plane);
+  color: var(--text-primary);
+}

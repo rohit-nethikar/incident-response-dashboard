@@ -1,0 +1,205 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------- Enums ----------------
+
+enum Role {
+  ADMIN
+  RESPONDER
+  VIEWER
+}
+
+enum SourceSystem {
+  CLOUD_LOGGING
+  CLOUD_MONITORING
+  CLOUD_RUN
+  CLOUD_FUNCTIONS
+  DATA_FUSION
+  BIGQUERY
+  TABLEAU_SERVER
+}
+
+enum Severity {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+  INFO
+}
+
+enum IncidentStatus {
+  OPEN
+  ACKNOWLEDGED
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+  IGNORED
+}
+
+enum AuditAction {
+  INCIDENT_CREATED
+  INCIDENT_ACKNOWLEDGED
+  INCIDENT_STATUS_CHANGED
+  INCIDENT_ASSIGNED
+  REMEDIATION_SUGGESTED
+  REMEDIATION_APPROVED
+  RUNBOOK_CREATED
+  RUNBOOK_UPDATED
+  USER_ROLE_CHANGED
+  CONNECTOR_MODE_CHANGED
+  SEED_ADMIN_PROMOTED
+}
+
+// ---------------- Identity ----------------
+
+model User {
+  id          String    @id @default(cuid())
+  googleSub   String    @unique
+  email       String    @unique
+  name        String?
+  avatarUrl   String?
+  role        Role      @default(VIEWER)
+  createdAt   DateTime  @default(now())
+  lastLoginAt DateTime?
+
+  ownedIncidents  Incident[]       @relation("IncidentOwner")
+  acknowledgments Acknowledgment[]
+  auditLogEntries AuditLogEntry[]
+  teamMemberships TeamMembership[]
+}
+
+model Team {
+  id          String @id @default(cuid())
+  name        String @unique
+  description String?
+
+  members   TeamMembership[]
+  incidents Incident[] @relation("IncidentTeam")
+  runbooks  Runbook[]  @relation("RunbookOwnerTeam")
+}
+
+model TeamMembership {
+  id     String @id @default(cuid())
+  userId String
+  teamId String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, teamId])
+}
+
+// ---------------- Incident domain ----------------
+
+model Incident {
+  id               String         @id @default(cuid())
+  title            String
+  description      String
+  sourceSystem     SourceSystem
+  externalId       String?
+  severity         Severity
+  severityFactors  Json
+  businessImpact   Json
+  status           IncidentStatus @default(OPEN)
+  affectedResource String?
+  rawPayload       Json
+
+  ownerId String?
+  owner   User?   @relation("IncidentOwner", fields: [ownerId], references: [id])
+  teamId  String?
+  team    Team?   @relation("IncidentTeam", fields: [teamId], references: [id])
+
+  runbookId String?
+  runbook   Runbook? @relation(fields: [runbookId], references: [id])
+
+  firstSeenAt DateTime  @default(now())
+  lastSeenAt  DateTime  @default(now())
+  resolvedAt  DateTime?
+
+  acknowledgments Acknowledgment[]
+  timelineEntries IncidentTimelineEntry[]
+  auditLogEntries AuditLogEntry[]
+
+  @@unique([sourceSystem, externalId])
+  @@index([status, severity])
+  @@index([sourceSystem])
+}
+
+model Runbook {
+  id           String        @id @default(cuid())
+  title        String
+  sourceSystem SourceSystem?
+  triggerTags  String[]
+  steps        Json
+  ownerTeamId  String?
+  ownerTeam    Team?         @relation("RunbookOwnerTeam", fields: [ownerTeamId], references: [id])
+  createdById  String
+  updatedById  String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  incidents Incident[]
+}
+
+model Acknowledgment {
+  id         String   @id @default(cuid())
+  incidentId String
+  incident   Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  note       String?
+  createdAt  DateTime @default(now())
+}
+
+// Append-only by convention: no PATCH/DELETE route is ever exposed for this
+// model. See apps/server/src/rest/audit.routes.ts (read-only) and
+// services/audit.ts (the only writer).
+model AuditLogEntry {
+  id         String       @id @default(cuid())
+  action     AuditAction
+  incidentId String?
+  incident   Incident?    @relation(fields: [incidentId], references: [id])
+  actorId    String
+  actor      User         @relation(fields: [actorId], references: [id])
+  metadata   Json
+  createdAt  DateTime     @default(now())
+
+  @@index([incidentId])
+  @@index([createdAt])
+}
+
+model IncidentTimelineEntry {
+  id          String   @id @default(cuid())
+  incidentId  String
+  incident    Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  eventType   String
+  description String
+  createdAt   DateTime @default(now())
+
+  @@index([incidentId])
+}
+
+// DB-backed "current state" for cross-process concerns (background poll
+// loop + REST API must agree even across restarts) — mirrors the existing
+// Tableau Admin Dashboard's "site context belongs in DB, not session"
+// pattern.
+model SystemSetting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+}
+
+model ConnectorState {
+  sourceSystem SourceSystem @id
+  mode         String       @default("mock") // "mock" | "real"
+  lastPolledAt DateTime?
+  cursor       Json?
+  isHealthy    Boolean      @default(true)
+  lastError    String?
+}
