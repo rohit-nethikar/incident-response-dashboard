@@ -27,7 +27,7 @@ async function runCycle(): Promise<void> {
         where: { sourceSystem: connector.sourceSystem },
         data: {
           lastPolledAt: new Date(),
-          cursor: (nextCursor ?? null) as Prisma.InputJsonValue,
+          cursor: (nextCursor ?? null) as any,
           isHealthy: healthy,
           lastError: null,
         },

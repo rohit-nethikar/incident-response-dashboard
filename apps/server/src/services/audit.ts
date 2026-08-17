@@ -18,7 +18,7 @@ type AuditAction =
 // deliberately no update/delete counterpart — see
 // apps/server/src/rest/audit.routes.ts, which only exposes GET.
 export async function logAudit(
-  client: Prisma.TransactionClient | PrismaClient,
+  client: any,
   params: {
     action: AuditAction;
     actorId: string;
@@ -31,7 +31,7 @@ export async function logAudit(
       action: params.action,
       actorId: params.actorId,
       incidentId: params.incidentId ?? undefined,
-      metadata: params.metadata as Prisma.InputJsonValue,
+      metadata: params.metadata as any,
     },
   });
 }

@@ -19,7 +19,7 @@ export interface ListIncidentsParams {
 
 export function fetchIncidents(params: ListIncidentsParams = {}) {
   return apiFetch<IncidentListResponse>(
-    `/api/v1/incidents${buildQueryString(params)}`
+    `/api/v1/incidents${buildQueryString(params as Record<string, string | number | undefined>)}`
   );
 }
 

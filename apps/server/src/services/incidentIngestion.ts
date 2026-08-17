@@ -88,7 +88,7 @@ export async function ingestEvent(event: NormalizedEvent): Promise<void> {
   const runbook = await findMatchingRunbook(event);
   const systemActorId = await getSystemActorId();
 
-  const incident = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
+  const incident = await prisma.$transaction(async (tx: any) => {
     const created = await tx.incident.create({
       data: {
         title: event.title,
@@ -96,10 +96,10 @@ export async function ingestEvent(event: NormalizedEvent): Promise<void> {
         sourceSystem: event.sourceSystem,
         externalId: event.externalId,
         severity,
-        severityFactors: severityFactors as unknown as Prisma.InputJsonValue,
-        businessImpact: businessImpact as unknown as Prisma.InputJsonValue,
+        severityFactors: severityFactors as any,
+        businessImpact: businessImpact as any,
         affectedResource: event.affectedResource,
-        rawPayload: event.rawPayload as Prisma.InputJsonValue,
+        rawPayload: event.rawPayload as any,
         runbookId: runbook?.id,
       },
     });

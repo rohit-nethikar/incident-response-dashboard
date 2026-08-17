@@ -7,5 +7,5 @@ export interface ListAuditParams {
 }
 
 export function fetchAuditLog(params: ListAuditParams = {}) {
-  return apiFetch<AuditLogEntry[]>(`/api/v1/audit${buildQueryString(params)}`);
+  return apiFetch<AuditLogEntry[]>(`/api/v1/audit${buildQueryString(params as Record<string, string | number | undefined>)}`);
 }
