@@ -39,25 +39,35 @@ authRouter.post("/sync-user", async (req, res) => {
 
   const { googleSub, email, name, avatarUrl } = parsed.data;
 
-  // Auto-promotion is limited to exactly one case: SEED_ADMIN_EMAIL, and
-  // only applies the first time that email signs in (a brand-new user row).
-  // Every other role change requires an explicit Admin action via
-  // PATCH /api/v1/users/:id/role.
-  const existing = await prisma.user.findUnique({ where: { email } });
-  const shouldSeedAdmin = !existing && env.seedAdminEmail && email === env.seedAdminEmail;
+  try {
+    // Auto-promotion is limited to exactly one case: SEED_ADMIN_EMAIL, and
+    // only applies the first time that email signs in (a brand-new user row).
+    // Every other role change requires an explicit Admin action via
+    // PATCH /api/v1/users/:id/role.
+    const existing = await prisma.user.findUnique({ where: { email } });
+    const shouldSeedAdmin = !existing && env.seedAdminEmail && email === env.seedAdminEmail;
 
-  const user = await prisma.user.upsert({
-    where: { email },
-    update: { googleSub, name, avatarUrl, lastLoginAt: new Date() },
-    create: {
-      googleSub,
-      email,
-      name,
-      avatarUrl,
-      role: shouldSeedAdmin ? "ADMIN" : "VIEWER",
-      lastLoginAt: new Date(),
-    },
-  });
+    const user = await prisma.user.upsert({
+      where: { email },
+      update: { googleSub, name, avatarUrl, lastLoginAt: new Date() },
+      create: {
+        googleSub,
+        email,
+        name,
+        avatarUrl,
+        role: shouldSeedAdmin ? "ADMIN" : "VIEWER",
+        lastLoginAt: new Date(),
+      },
+    });
 
-  res.json({ id: user.id, email: user.email, role: user.role, name: user.name });
+    res.json({ id: user.id, email: user.email, role: user.role, name: user.name });
+  } catch (err) {
+    console.error("[auth] Error syncing user:", err instanceof Error ? err.message : String(err));
+    if (err instanceof Error && err.message.includes("connect")) {
+      return res.status(503).json({
+        error: "Database connection error. Ensure DATABASE_URL is configured and the database is accessible.",
+      });
+    }
+    res.status(500).json({ error: "Failed to sync user with database" });
+  }
 });

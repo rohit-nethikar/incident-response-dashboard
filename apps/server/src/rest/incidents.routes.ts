@@ -5,6 +5,8 @@ import {
   assignIncidentSchema,
   acknowledgeIncidentSchema,
   approveRemediationSchema,
+  LEGAL_TRANSITIONS,
+  type IncidentStatus,
 } from "@incident-dash/shared";
 import { prisma } from "../db/prismaClient";
 import { requirePermission } from "../auth/requireRole";
@@ -18,6 +20,27 @@ import {
 } from "../services/incidentLifecycle";
 
 export const incidentsRouter = Router();
+
+/**
+ * Middleware to validate status transitions before processing.
+ * Ensures only legal transitions defined in LEGAL_TRANSITIONS are allowed.
+ */
+async function validateStatusTransition(incidentId: string, nextStatus: IncidentStatus): Promise<IncidentStatus> {
+  const incident = await prisma.incident.findUnique({ where: { id: incidentId } });
+  if (!incident) {
+    throw new NotFoundError(`Incident ${incidentId} not found`);
+  }
+
+  const legalTransitions = LEGAL_TRANSITIONS[incident.status as IncidentStatus] ?? [];
+  if (!legalTransitions.includes(nextStatus)) {
+    throw new IllegalTransitionError(
+      `Cannot transition incident from ${incident.status} to ${nextStatus}. ` +
+      `Valid transitions from ${incident.status} are: ${legalTransitions.join(", ") || "none (final state)"}`
+    );
+  }
+
+  return incident.status as IncidentStatus;
+}
 
 incidentsRouter.get("/", requirePermission("incident:view"), async (req, res) => {
   const parsed = listIncidentsQuerySchema.safeParse(req.query);
@@ -57,6 +80,10 @@ incidentsRouter.patch("/:id/status", requirePermission("incident:change_status")
   if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
 
   try {
+    // Validate the status transition before attempting to change it.
+    // This ensures the client receives a clear error message if the transition is not allowed.
+    await validateStatusTransition(req.params.id, parsed.data.status);
+
     const updated = await changeStatus({
       incidentId: req.params.id,
       actorId: req.user!.id,
