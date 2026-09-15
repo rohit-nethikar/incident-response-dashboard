@@ -1,0 +1,596 @@
+Workbook | Tableau Embedding API
+Tableau Embedding API
+Preparing search index...
+Workbook
+Interface Workbook
+interface
+Workbook
+{
+   �
+activeCustomView
+:
+undefined
+|
+CustomView
+;
+   �
+activeSheet
+:
+Sheet
+;
+   �
+name
+:
+string
+;
+   �
+publishedSheetsInfo
+:
+SheetInfo
+[]
+;
+   �
+activateSheetAsync
+(
+sheetNameOrIndex
+:
+string
+|
+number
+)
+:
+Promise
+<
+Sheet
+>
+;
+   �
+changeParameterValueAsync
+(
+       �
+name
+:
+string
+,
+       �
+value
+:
+string
+|
+number
+|
+boolean
+|
+Date
+,
+   �
+)
+:
+Promise
+<
+Parameter
+>
+;
+   �
+getCustomViewsAsync
+()
+:
+Promise
+<
+CustomView
+[]
+>
+;
+   �
+getParametersAsync
+()
+:
+Promise
+<
+Parameter
+[]
+>
+;
+   �
+removeCustomViewAsync
+(
+customViewName
+:
+string
+)
+:
+Promise
+<
+CustomView
+>
+;
+   �
+revertAllAsync
+()
+:
+Promise
+<
+void
+>
+;
+   �
+saveCustomViewAsync
+(
+customViewName
+:
+string
+)
+:
+Promise
+<
+CustomView
+>
+;
+   �
+setActiveCustomViewAsDefaultAsync
+()
+:
+Promise
+<
+void
+>
+;
+   �
+showCustomViewAsync
+(
+       �
+customViewName
+?:
+null
+|
+string
+,
+   �
+)
+:
+Promise
+<
+undefined
+|
+CustomView
+>
+;
+}
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:4
+Index
+Methods
+activate
+Sheet
+Async
+change
+Parameter
+Value
+Async
+get
+Custom
+Views
+Async
+get
+Parameters
+Async
+remove
+Custom
+View
+Async
+revert
+All
+Async
+save
+Custom
+View
+Async
+set
+Active
+Custom
+View
+As
+Default
+Async
+show
+Custom
+View
+Async
+Properties
+active
+Custom
+View
+active
+Sheet
+name
+published
+Sheets
+Info
+Methods
+activate
+Sheet
+Async
+activateSheetAsync
+(
+sheetNameOrIndex
+:
+string
+|
+number
+)
+:
+Promise
+<
+Sheet
+>
+Activates the sheet, either by name or index, and returns a promise of the sheet that was activated.
+Parameters
+sheetNameOrIndex
+:
+string
+|
+number
+Returns
+Promise
+<
+Sheet
+>
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:28
+change
+Parameter
+Value
+Async
+changeParameterValueAsync
+(
+   �
+name
+:
+string
+,
+   �
+value
+:
+string
+|
+number
+|
+boolean
+|
+Date
+,
+)
+:
+Promise
+<
+Parameter
+>
+Modifies the given parameter and assigns it a new value. The new value must fall within
+the domain restrictions defined by
+allowableValues
+. If the domain restriction is
+ParameterValueType.Range
+,
+be sure to check the
+allowableValues
+before assigning a new value. If the new value is out of range, the
+updated value will be set to either the
+minValue
+or the
+maxValue
+of the allowable range. If a step size is also specified
+and the new value does not fall on the step intervals, the updated value will be set to the closest, lower step,
+or closest, earlier date. If the domain restriction is type
+ParameterValueType.List
+, and there are aliases defined for the list,
+the aliased value should be passed to the method.
+Parameters
+name
+:
+string
+The name of the parameter
+value
+:
+string
+|
+number
+|
+boolean
+|
+Date
+The new value to assign to this parameter.
+Note
+For changing
+Date
+parameters, UTC Date objects are expected.
+Returns
+Promise
+<
+Parameter
+>
+The updated
+Parameter
+. The promise is rejected if
+name
+or
+value
+is invalid. However, if the domain restriction
+is type
+AllowableValuesType.Range
+, and the
+value
+is out of the range bounds, the parameter gets set to the
+minValue
+or the
+maxValue
+of the range (whichever is closer). If the range has a
+stepSize
+or
+dateStepPeriod
+, the parameter gets set
+to the closest, lower step, or the closest, earlier date.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:86
+get
+Custom
+Views
+Async
+getCustomViewsAsync
+()
+:
+Promise
+<
+CustomView
+[]
+>
+Gets the collection of CustomView objects associated with the workbook.
+Returns
+Promise
+<
+CustomView
+[]
+>
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:38
+get
+Parameters
+Async
+getParametersAsync
+()
+:
+Promise
+<
+Parameter
+[]
+>
+Returns
+Promise
+<
+Parameter
+[]
+>
+A collection of all the Tableau parameters that are used in this workbook.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:66
+remove
+Custom
+View
+Async
+removeCustomViewAsync
+(
+customViewName
+:
+string
+)
+:
+Promise
+<
+CustomView
+>
+Removes the named custom view.
+Parameters
+customViewName
+:
+string
+Returns
+Promise
+<
+CustomView
+>
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:51
+revert
+All
+Async
+revertAllAsync
+()
+:
+Promise
+<
+void
+>
+Reverts the workbook to its last saved state.
+Returns
+Promise
+<
+void
+>
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:33
+save
+Custom
+View
+Async
+saveCustomViewAsync
+(
+customViewName
+:
+string
+)
+:
+Promise
+<
+CustomView
+>
+Saves the current state of the workbook by assigning a custom view name.
+Parameters
+customViewName
+:
+string
+Returns
+Promise
+<
+CustomView
+>
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:56
+set
+Active
+Custom
+View
+As
+Default
+Async
+setActiveCustomViewAsDefaultAsync
+()
+:
+Promise
+<
+void
+>
+Sets the active custom view as the default. If there is no active custom view, the default view is the original view.
+Returns
+Promise
+<
+void
+>
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:61
+show
+Custom
+View
+Async
+showCustomViewAsync
+(
+   �
+customViewName
+?:
+null
+|
+string
+,
+)
+:
+Promise
+<
+undefined
+|
+CustomView
+>
+Changes the visualization to show the named saved state.
+workbook.showCustomViewAsync("Awesome" ).then(function() { // do something });
+To reset a custom view to the original view, do not provide the customViewName parameter.
+workbook.showCustomViewAsync().then(function() { // do something });
+Parameters
+Optional
+customViewName
+:
+null
+|
+string
+Returns
+Promise
+<
+undefined
+|
+CustomView
+>
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:46
+Properties
+Readonly
+active
+Custom
+View
+activeCustomView
+:
+undefined
+|
+CustomView
+Gets the currently active custom view, or undefined if no custom view is active.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:23
+Readonly
+active
+Sheet
+activeSheet
+:
+Sheet
+Gets the currently active sheet (the active tab).
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:13
+Readonly
+name
+name
+:
+string
+Gets the name of the workbook saved to the server. Note that this is not necessarily the file name.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:8
+Readonly
+published
+Sheets
+Info
+publishedSheetsInfo
+:
+SheetInfo
+[]
+Note that this is synchronous, meaning that all of the sheets are expected when loaded.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:18
+Settings
+Member Visibility
+Protected
+Inherited
+External
+Theme
+OS
+Light
+Dark
+On This Page
+Methods
+activate
+Sheet
+Async
+change
+Parameter
+Value
+Async
+get
+Custom
+Views
+Async
+get
+Parameters
+Async
+remove
+Custom
+View
+Async
+revert
+All
+Async
+save
+Custom
+View
+Async
+set
+Active
+Custom
+View
+As
+Default
+Async
+show
+Custom
+View
+Async
+Properties
+active
+Custom
+View
+active
+Sheet
+name
+published
+Sheets
+Info
+Tableau Embedding API
+Loading...
+&copy; Copyright   Salesforce, Inc.  All rights reserved. Various trademarks held by their respective owners. Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States

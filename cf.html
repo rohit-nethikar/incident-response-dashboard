@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <title>We couldn't find the page you were looking for.</title>
+    <link rel="icon" href="//www.tableau.com/favicon.ico" type="image/x-icon">
+    <script src="https://a.sfdcstatic.com/enterprise/tableau/prod/6170/v1/oneTrust/scripttemplates/otSDKStub.js"
+      data-domain-script="2d08f29e-0ede-4e8c-997c-f7ef5be8d4e7"
+      type="text/javascript"
+      charset="UTF-8"
+></script>
+<script type="text/javascript">
+ function OptanonWrapper() {
+   window.addEventListener('load', () => {
+     window.dataLayer.push({ event: 'OneTrustGroupsUpdated' });
+
+     let optanonCookie = decodeURIComponent(document.cookie);
+     let activeGroups = OnetrustActiveGroups;
+
+     if (optanonCookie.includes('OptanonConsent') && activeGroups) {
+       if (activeGroups.includes('3')) {
+         let event = new CustomEvent('UpdateCookieConsent', {
+           detail: {
+             value: true
+           }
+         });
+         window.dispatchEvent(event);
+       }
+     }
+   });
+
+   OneTrust.OnConsentChanged(OneTrustActiveGroups => {
+     if (OnetrustActiveGroups.includes('3')) {
+       let event = new CustomEvent('UpdateCookieConsent', {
+         detail: {
+           value: true
+         }
+       });
+       window.dispatchEvent(event);
+     } else {
+       let event = new CustomEvent('UpdateCookieConsent', {
+         detail: {
+           value: false
+         }
+       });
+       window.dispatchEvent(event);
+     }
+   });
+ }
+</script>
+
+    <script type="text/javascript">
+  (function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+      'gtm.start': new Date().getTime(),
+      event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != 'dataLayer' ? String.fromCharCode(38) + 'l=' + l : '';
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-BVCN');
+</script>
+    <style>
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  word-wrap: break-word;      
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;  
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.iframe-container { 
+  position: relative;
+  margin: 20px;
+  display:block;
+}
+
+iframe {
+ width: 100%;
+ height: 130vh;
+ border: none;
+ 
+ @media (min-width: 375px) {
+  height: 110vh;
+ }
+
+ @media (min-width: 393px) {
+  height: 90vh;
+ }
+
+ @media (min-width: 769px) {
+  height: 70vh;
+ }
+}
+
+/* Header
+-------------- */
+header {
+  background: #fff;
+  border-bottom: 0.5px solid #cbcbcb;
+  z-index: 15;
+}
+
+header.container--full-width {
+  top: 0;
+}
+
+.header__logo {
+  flex-grow: 1;
+
+  @media (min-width: 768px) {
+    flex-grow: 0;
+    text-align: justify;
+  }
+}
+
+.header__logo__img {
+  width: 140px;
+  height: 29px;
+}
+
+h1,
+h2,
+h4,
+span,
+article {
+  font-family: 'Benton Sans Book', Helvetica, sans-serif; 
+  font-weight: 100;
+  line-height: 1.39;
+  margin-bottom: 0;
+  padding-bottom: 0.5em;
+}
+
+footer {
+  font-family: 'Benton Sans Book', Helvetica, sans-serif;
+}
+
+/* Containers
+--------------- */
+.container--full-width {
+  padding: 1.6rem 1.6rem;
+  position: relative;
+}
+
+.container--centered {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  max-width: 1550px;
+  margin: 0 auto;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 1.6rem;
+}
+
+.item {
+  align-self: flex-start;
+  padding: 1.6rem;
+
+  @media (min-width: 768px) {
+    max-width: 40%;
+  }
+
+  @media (min-width: 950px) {
+    max-width: 30%;
+  }
+
+}
+
+/* Font imports
+----------------- */
+@font-face {
+    font-display: 'fallback';
+    font-family: 'Benton Sans Book';
+    src: local('Benton Sans Book');
+    src: url('https://www.tableau.com/sites/all/fonts/bentonsans-book.eot#iefix')
+        format('embedded-opentype'),
+    url('https://www.tableau.com/sites/all/fonts/bentonsans-book.woff2') format('woff2'),
+    url('https://www.tableau.com/sites/all/fonts/bentonsans-book.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-display: 'fallback';
+    font-family: 'Merriweather';
+    src: local('Merriweather');
+    src: url('https://www.tableau.com/sites/all/fonts/merriweather-light.eot#iefix')
+        format('embedded-opentype'),
+    url('https://www.tableau.com/sites/all/fonts/merriweather-light.woff2') format('woff2'),
+    url('https://www.tableau.com/sites/all/fonts/merriweather-light.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-display: 'fallback';
+    font-family: 'Benton Sans Light';
+    src: local('Benton Sans Light');
+    src: url('https://www.tableau.com/sites/all/fonts/bentonsans-light.eot#iefix')
+        format('embedded-opentype'),
+    url('https://www.tableau.com/sites/all/fonts/bentonsans-light.woff2') format('woff2'),
+    url('https://www.tableau.com/sites/all/fonts/bentonsans-light.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-display: 'fallback';
+    font-family: 'Merriweather';
+    src: local('Merriweather');
+    src: url('https://www.tableau.com/sites/all/fonts/merriweather-bold.eot#iefix')
+        format('embedded-opentype'),
+    url('https://www.tableau.com/sites/all/fonts/merriweather-bold.woff2') format('woff2'),
+    url('https://www.tableau.com/sites/all/fonts/merriweather-bold.woff') format('woff');
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-display: 'fallback';
+    font-family: 'Merriweather';
+    src: local('Merriweather');
+    src: url('https://www.tableau.com/sites/all/fonts/merriweather-light-italic.eot#iefix')
+        format('embedded-opentype'),
+    url('https://www.tableau.com/sites/all/fonts/merriweather-light-italic.woff2') format('woff2'),
+    url('https://www.tableau.com/sites/all/fonts/merriweather-light-italic.woff') format('woff');
+    font-style: italic;
+    font-weight: normal;
+}
+
+/* Footer
+-------------------- */
+footer {
+  background: #1b1b1b;
+  padding: 1.6rem;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  
+  @media (min-width: 769px) {
+    bottom: 0;
+    position:fixed;
+    height: 20vh;
+  }
+
+  .container--centered {
+    flex-direction: column;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      align-items: center;
+      flex-direction: row;
+      flex-grow: 1;
+      justify-content: center;
+      text-align: justify;
+    }
+  }
+}
+
+.footer__copyright,
+.footer__links a {
+  color: #bbb;
+}
+
+.footer__links a:hover {
+  color: #bbb;
+  text-decoration: underline !important;
+}
+
+.copyright-container {
+  display: flex;
+  justify-content: center;
+  color: #bbb;  
+}
+
+.copyright-content, #yearParagraph, #rights-link {
+  color: #bbb;
+}
+
+.footer__links {
+  > ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1.1rem;
+
+      > li {
+      display: inline;
+      padding-right: 3.2rem;
+      line-height: 3rem;
+
+      @media (min-width: 768px) {
+        line-height: 1rem;
+      }
+    }
+  }  
+}
+
+/* Text
+---------------- */
+.text--centered {
+  text-align: center;
+  width: 100%;
+}
+
+/* Dropup menu
+-------------- */
+.dropbtn {
+  background-color: #333;
+  padding: 0.6rem 1.6rem;
+  border: none;
+  font-family: "Benton Sans Book",Helvetica,sans-serif;
+  font-size: 1.28rem !important;
+  line-height: 1.86;
+  color: #aaa;
+  letter-spacing: 1px;
+}
+
+.dropup {
+  position: relative;
+  display: inline-block;
+}
+
+.dropup-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 1.3rem;
+  bottom: 35px;
+  z-index: 1;  
+}
+
+.dropup-content a {
+  color: #aaa;
+  line-height: 1.65;
+  padding: 0rem 1rem;
+  text-decoration: none;  
+  text-transform: none;
+  letter-spacing: normal;
+  display: block;
+}
+
+.dropup-content a:hover {background-color: #ccc}
+
+.dropup:hover .dropup-content {
+  display: block;
+}
+
+.dropup:hover .dropbtn {
+  background-color: #333;
+}
+
+/* One Trust Cookie Manager
+-------------------- */
+.ot-cat-grp, .ot-title-cntr, .ot-desc-cntr, .ot-btn-container {
+  font-size: 1.6rem;
+}
+
+.ot-sdk-row {
+  font-size: 1.28rem;
+}</style>  
+  </head>
+  <body>
+    <noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-BVCN" height="0" width="0" style="display:none;visibility:hidden">
+  </iframe>
+</noscript>
+    <header class="container--full-width" >
+      <div class="container--centered">
+        <div class="header__logo">
+          <a href="https://www.tableau.com/support/help">
+            <img class="header__logo__img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcQAAABeCAMAAACKC5S8AAAAYFBMVEUAAAAbQ33JIDXpgSsxTYDHHzNvmaUcRH0bQ38bQ30cRHxbiJvskS0bQ34cQ33rkS1ul6fpdS1abZJZZZFZZZEiSYHJHzVZh5tacZXJIDXskS1wmaZaZZEcRH5Zh5vpdi0aehpOAAAAGXRSTlMA58A+F0CBvkKCZcDAn89/P8BAwYAwfoBm00FwiwAABOBJREFUeF7s211rhDAQRuGAQ1w/YGctpSVR+///ZTW5MNAstLTrRnvO3Xv9IAxIzM+y3ltTWLQ/IoFIIBKIIBKIBCKJxlZEjYkpOro653qTpP5L1iTNS515bAQiiGJjnfedjemhEEHMHzYggkgg7hWIBCKBCCKIl5CAeOSm0OV8iKIqIBZctRUQk52Fk2ErICZbQHxKlbvf1WR6m+83gJgLRBBBbNbasyP2SW4pmVnE924ryCVbC/2waq7T2AOu06Zea4+MCGI9rTUgfisQQaxCh0YE8faxdPs3iCCCCCKIIIIIIoiv4TcGiPun1uofIb6M4ziA+Mz3Tr9H/GTnbpvahmE4gNsgJsk7e49mcJtu3/9brrRDTXAbP9I2XP7v4Kqi5Oec3cTl8ohAL4krQ9TG6V0Q77/sUoP4a5enyyJGPlRZ7wyrUA4R6Fg2BBGcD7KLRQeFcA7tawXJPuZ0HL+EprW8j/6E6FLENHlEzSURycoxFksRp1ViuRsRePqOvoAxYtq4FJ+WGToEdoR+rYjgJUkeMU2IfYhkZRbrTCZOkjQjMrO3ZGmdiBBkDKLYmEWsE8koehmIiJEdOuZ1IqKMQhQL7YgkUqnIMhSR2NtYgng/zQFx9qsmRMZ57P8ZYh6XPxVaW4FoZ0WhGREmb4KYGxVKoBWhF5E9Ezsb84g7t6V8O7GH8QXxaXHvIkpJOHPygtPFRTGidYeOotdLpxURdX0E0/nRm7OxMmsCnO1ChIDkrD/9Re6vjYg//6T5Ph6R5e3ZAixFxHRRYtsQ9bIK8GamhuIKY7gH0YBDT2aViCdGPDcg6jmlNkSfiEDm0sakwlAHoiZF1K1qt4pIOvf0ISoDtyHatA1cbkP0Sh2LuMI5kXW89yHqlROaEEl7TFpbrvBmLOIK79joAIB+RBNknwZEBQvpIlviYoW+4YZoTS+ilgm0IHo5G1pEhA3xdS7CgYjUgojViF4BNkQZh0jvg8gLFStB3K5EdxuIj3e71CDiLnzJOTFceU7UqTmTK86Jd8+71CDqCVrV6hT7V6dQjUhDEdM9NitAvJnPiU7bSHKdz4mafkTNWMT0OLAfkXvu2MD5O6+ZCtgQ9d6p60WMffdOgw6BuqMULEdMXs8fBZFFFXsQY+dTDHd6LQou+zjRQyGiT+bdQ89h/Yj6PBFJj7YQUR8nGuh/nqhtwLE18ktdhGQrjiu52xrgjSqvGDHd2mKRmTFUPdkPyJxsB2hBJHlN4H0wZLqIokHPfNwOkBkngfSx6T7wARCNH7fHJkAzonHVXTg5new4seh1rAqbLsT7fa6OaHw/ohq2IxrOdFGsWPV6bzoQNddHNM4OQWQYuO9Uuyiu0NQcKJuPgmjAJ0eHtFiRKahG1PVR3f5hYFtVAr6mZ3g4Zo84+RlOFtAxh+n3GBiDmP8ShC5wCv5knFU4GPRdDJxweDL5EKMWoHeQP9DD60O+54fn83ks3wmbOfTMN0dqA/Ujprii/EgiOWYmgt428rk5xO0f9G2I750N8V97d5OCQAwDYLSI4M+yjqKQuf81rbQLwZWLQgPvXeEjkFUi4jSTt9MURIxmckTX+EVERBERMQERERERRbzXLpo6JIso4i1+TY6IiDw+/onYX/gsjefWRbMNJSe+JxARERERRUREREREalMWwxtlOQbs4dwwrgAAAABJRU5ErkJggg==" alt="Tableau Software">
+          </a>
+        </div>      
+      </div>    
+    </header>
+    <div class="iframe-container" id="iframe-container"></div>    
+    <footer>
+      <div class="container--centered">
+        <div class="footer__links">
+          <ul>
+            <li>
+  <div class="dropup">
+    <button id="lang-btn" class="dropbtn">Language
+      <i class="fa fa-caret-up"></i>
+    </button>
+    <div class="dropup-content">
+      <a href="/404-en-us.html" onclick="updateURL(event)">English (US)</a>
+      <a href="/404-de-de.html" onclick="updateURL(event)">Deutsch</a>
+      <a href="/404-en-gb.html" onclick="updateURL(event)">English (UK)</a>
+      <a href="/404-es-es.html" onclick="updateURL(event)">Español</a>
+      <a href="/404-fr-ca.html" onclick="updateURL(event)">Français (Canada)</a>
+      <a href="/404-fr-fr.html" onclick="updateURL(event)">Français (France)</a>
+      <a href="/404-it-it.html" onclick="updateURL(event)">Italiano<a>
+      <a href="/404-ja-jp.html" onclick="updateURL(event)">日本語</a>
+      <a href="/404-ko-kr.html" onclick="updateURL(event)">한국어</a>
+      <a href="/404-nl-nl.html" onclick="updateURL(event)">Nederlands<a>
+      <a href="/404-pt-br.html" onclick="updateURL(event)">Português</a>
+      <a href="/404-sv-se.html" onclick="updateURL(event)">Svenska</a>
+      <a href="/404-th-th.html" onclick="updateURL(event)">ไทย<a>
+      <a href="/404-zh-cn.html" onclick="updateURL(event)">简体中文</a>
+      <a href="/404-zh-tw.html" onclick="updateURL(event)">繁體中文</a>
+    </div>
+  </div>
+</li>
+
+            <li><a id="legal" href="https://www.salesforce.com/company/legal/">Legal</a></li>
+            <li><a id="tos" href="https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/">Terms of Service</a></li>
+            <li><a id="privacy" href="https://www.salesforce.com/company/privacy/" target="_blank" data-value="Privacy">Privacy Information</a></li>
+            <li><a id="disclosure" href="https://www.salesforce.com/company/disclosure/">Responsible Disclosure</a></li>
+            <li><a id="trust" href="https://trust.salesforce.com/">Trust</a></li>
+            <li><a id="contact" href="https://www.salesforce.com/company/contact-us/?d=cta-glob-footer-11">Contact</a></li>
+            <li><a id="cookies" href="#" data-ignore-geolocation="true" class="optanon-toggle-display">Cookie Preferences</a></li>
+            <li><a id="choices" href="https://www.salesforce.com/form/other/privacy-request/?d=cta-footer-1">Your Privacy Choices</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright-container">
+        <span id="currentYear">© Copyright </span>&nbsp;
+        <span>Salesforce, Inc.</span>&nbsp;
+        <a id="rights-link" href="https://www.salesforce.com/company/legal/intellectual/">All rights reserved.</a>&nbsp;
+        <span id="copyright" class="copyright-content"></span>
+      </div>
+    </footer>
+  </body>
+  <script>
+    const languagesMap = {
+  "en-us": "English (US)",
+  "de-de": "Deutsch",
+  "en-gb": "English (UK)",
+  "es-es": "Español",
+  "fr-ca": "Français (Canada)",
+  "fr-fr": "Français (France)",
+  "it-it": "Italiano",
+  "ja-jp": "日本語",
+  "ko-kr": "한국어",
+  "nl-nl": "Nederlands",
+  "pt-br": "Português",
+  "sv-se": "Svenska",
+  "th-th": "ไทย",
+  "zh-cn": "简体中文",
+  "zh-tw": "繁體中文"
+};
+
+window.addEventListener("load", (event) => {
+  let language = window.navigator.language;
+
+  let url = getUrl(window.location.href);
+
+  let iframeContainer = document.getElementById("iframe-container");
+  let iframe = document.createElement("iframe");
+  iframe.setAttribute("frameborder", "0");
+  iframe.setAttribute("id", "page-content");
+  iframeContainer.appendChild(iframe);
+  let src = "";
+  let locale = "";  
+  
+  getYear();
+
+  if (url) {
+    switch (language) {
+      case "de":
+      case "de-DE":
+        src = url.origin + "/404-de-de.html";
+        locale = "de-de";
+        break;
+      case "en-GB":
+        src = url.origin + "/404-en-gb.html";
+        locale = "en-gb";
+        break;
+      case "es":
+      case "es-ES":
+        src = url.origin + "/404-es-es.html";
+        locale = "es-es";
+        break;
+      case "fr":
+      case "fr-FR":
+        src = url.origin + "/404-fr-fr.html";
+        locale = "fr-fr";
+        break;
+      case "fr-CA":
+        src = url.origin + "/404-fr-ca.html";
+        locale = "fr-ca";
+        break;
+      case "it":
+      case "it-IT":
+        src = url.origin + "/404-it-it.html";
+        locale = "it-it";
+        break;
+      case "ja":        
+      case "ja-JP":
+        src = url.origin + "/404-ja-jp.html";
+        locale = "ja-jp";
+        break;
+      case "ko":
+      case "ko-KR":
+        src = url.origin + "/404-ko-kr.html";
+        locale = "ko-kr";
+        break;
+      case "nl":
+      case "nl-NL":
+        src = url.origin + "/404-nl-nl.html";
+        locale = "nl-nl";
+        break; 
+      case "pt":
+      case "pt-BR":
+        src = url.origin + "/404-pt-br.html";
+        locale = "pt-br";
+        break;
+      case "sv":
+      case "sv-SE":
+        src = url.origin + "/404-sv-se.html";
+        locale = "sv-se";
+        break;
+      case "th":
+      case "th-TH":
+        src = url.origin + "/404-th-th.html";
+        locale = "th-th";
+        break;
+      case "zh":
+      case "zh-CN":
+        src = url.origin + "/404-zh-cn.html";
+        locale = "zh-cn";
+        break; 
+      case "zh-TW":
+        src = url.origin + "/404-zh-tw.html";
+        locale = "zh-tw";
+        break;
+      default: 
+        src = url.origin + "/404-en-us.html";
+        locale = "en-us";
+        break;
+    }  
+  } else {
+    src = url.origin + "/404-en-us.html";
+    locale = "en-us";
+  }
+
+  iframe.setAttribute("src", src);
+  history.pushState({}, "", src);
+
+  updateFooter(locale);
+});
+
+function updateFooter(locale){
+  _updateLanguagePicker(locale);
+  _updateStrings(locale);
+}
+
+function getYear() {
+  const currentYear = new Date().getFullYear();
+  document.getElementById('currentYear').textContent += currentYear;    
+}
+
+function getUrl(href)  {      
+  let url = null;
+
+  if (href) {
+    try {
+      url = new URL(href);
+    } catch (ignored) {
+      url = null;      
+    }
+  }
+  return url;
+}
+
+function updateURL(event) {
+  event.preventDefault();
+  var errorPage = event.target.getAttribute("href");
+  let url = getUrl(window.location.href);
+
+  history.pushState({}, "", url.origin + errorPage);
+
+  let iframe = document.getElementById("page-content");
+  iframe.setAttribute("src", url.origin + errorPage); 
+
+  let locale = errorPage.substring(5, 10);
+
+  updateFooter(locale);
+}
+
+function _updateLanguagePicker(locale) {
+  if (locale) {
+    let langBtn = document.getElementById("lang-btn");
+    langBtn.innerHTML = languagesMap[locale];
+  }      
+}
+
+function _updateStrings(locale) {
+  let legalLink = document.getElementById("legal");
+  let privacyLink = document.getElementById("privacy");
+  let cookiesLink = document.getElementById("cookies");
+  let tosLink = document.getElementById("tos");
+  let trustLink = document.getElementById("trust");
+  let contactLink = document.getElementById("contact");
+  let disclosureLink = document.getElementById("disclosure");
+  let choicesLink = document.getElementById("choices");
+  let copyrightElem = document.getElementById("copyright");
+  let rightsElem = document.getElementById("rights-link");
+  
+  switch(locale) {
+    case "de-de":
+      legalLink.text = "Rechtliche Hinweise";
+      tosLink.text = "Terms of Service";
+      privacyLink.href = "https://www.salesforce.com/de/company/privacy/";
+      privacyLink.text = "Datenschutz";
+      disclosureLink.href = "https://www.salesforce.com/de/company/disclosure/";
+      disclosureLink.text  = "Verantwortungsvolle Offenlegung";
+      trustLink.href = "https://trust.salesforce.com/de"
+      trustLink.text = "Trust";
+      contactLink.href="https://www.salesforce.com/de/form/contact/contactme/";
+      contactLink.text = "Kontakt";
+      cookiesLink.text = "Cookie-Einstellugen";
+      choicesLink.text = "Ihre Datenschutzauswahlen";
+      rightsElem.textContent = "Alle Rechte vorbehalten.";
+      copyrightElem.textContent = "Die verschiedenen Marken sind Eigentum ihrer jeweiligen Inhaber. Salesforce.com Germany GmbH, Erika-Mann-Str. 31, 80636 München, Deutschland | Telefon: +49 800 0010546";
+      document.title = "Die gesuchte Seite wurde nicht gefunden.";
+      break;
+    case "en-gb":
+      legalLink.text = "Legal";
+      tosLink.text = "Terms of Service";
+      privacyLink.href = "https://www.salesforce.com/company/privacy/";
+      privacyLink.text = "Privacy";
+      disclosureLink.href = "https://www.salesforce.com/company/disclosure/";
+      disclosureLink.text  = "Responsible Disclosure";
+      trustLink.href = "https://trust.salesforce.com/";
+      trustLink.text = "Trust";
+      contactLink.href="https://www.salesforce.com/de/form/contact/contactme/";
+      contactLink.text = "Contact";
+      cookiesLink.text = "Cookie Preferences";
+      choicesLink.text = "Your Privacy Choices";
+      rightsElem.textContent = "All rights reserved.";
+      copyrightElem.textContent = "Various trademarks held by their respective owners. salesforce UK Limited, village 9, floor 26 Salesforce Tower, 110 Bishopsgate, London, UK, EC2N 4AY. Telephone: (+44) 800 086 8530 | Fax: +44 870 351 5473";
+      document.title = "We couldn't find the page you were looking for.";
+      break;
+    case "es-es":
+      legalLink.text = "Legal";
+      tosLink.text = "Terminos de Servicios";
+      privacyLink.href = "https://www.salesforce.com/es/company/privacy/";
+      privacyLink.text = "Privacidad";
+      disclosureLink.href = "https://www.salesforce.com/es/company/disclosure/";
+      disclosureLink.text  = "Declaración de privacidad";
+      trustLink.href = "https://trust.salesforce.com/es";
+      trustLink.text = "Trust";
+      contactLink.href="https://www.salesforce.com/es/form/contact/contactme/";
+      contactLink.text = "Contacto";
+      cookiesLink.text = "Preferencias de Cookies";
+      choicesLink.text = "Sus opciones de privacidad";
+      rightsElem.textContent = "Reservados todos los derechos.";
+      copyrightElem.textContent = "Las distintas marcas comerciales pertenecen a sus respectivos propietarios. Salesforce Spain S.L., Paseo de la Castellana 79, Planta 7ª, Madrid, Spain, 28046. Teléfono: (+34) 800 300 229";
+      document.title = "No es posible encontrar la página que busca.";
+      break;
+    case "fr-ca":
+      legalLink.text = "Mentions légales";      
+      tosLink.text = "Conditions générales d'utilisation";
+      privacyLink.href = "https://www.salesforce.com/fr/company/privacy/";
+      privacyLink.text = "Confidentialité";
+      disclosureLink.href = "https://www.salesforce.com/company/legal/disclosure/";
+      disclosureLink.text  = "Divulgation responsable";
+      trustLink.href = "https://trust.salesforce.com/";
+      trustLink.text = "Trust";
+      contactLink.href="https://www.salesforce.com/fr-ca/form/contact/contactme/";
+      contactLink.text = "Contactez-nous";
+      cookiesLink.text = "Préférences en matière de témoins";
+      choicesLink.text = "Vos choix en matière de confidentialité";
+      rightsElem.textContent = "Tous droits réservés.";
+      copyrightElem.textContent = "Les différentes marques mentionnées appartiennent à leur propriétaire respectif. Salesforce Canada Corporation. 10 Bay Street, Suite 400 Toronto, ON, M5J 2R8, Canada. Tél: 1-833-996-2064";
+      document.title = "Nous n’avons pas trouvé la page que vous cherchez.";
+      break;
+    case "fr-fr":
+      legalLink.text = "Informations et mentions légales";      
+      tosLink.text = "Conditions d'utilisation";
+      privacyLink.href = "https://www.salesforce.com/fr/company/privacy/";
+      privacyLink.text = "Déclaration de confidentialité";
+      disclosureLink.href = "https://www.salesforce.com/fr/company/legal/disclosure/";
+      disclosureLink.text  = "Signalement de vulnérabilités";
+      trustLink.href = "https://trust.salesforce.com/fr";
+      trustLink.text = "Fiabilité";
+      contactLink.href="https://www.salesforce.com/fr/form/contact/contactme/";
+      contactLink.text = "Contact";
+      cookiesLink.text = "Gestion des cookies";
+      choicesLink.text = "Vos choix en matière de confidentialité";
+      rightsElem.textContent = "Tous droits réservés.";
+      copyrightElem.textContent = "Les différentes marques mentionnées appartiennent à leur propriétaire respectif. Salesforce.com France SAS – 3 Avenue Octave Gréard – 75007 Paris – Tél: (+33) 8 05 08 21 31";
+      document.title = "La page que vous recherchez est introuvable.";
+      break;
+    case "it-it":
+      legalLink.text = "Note legali";
+      tosLink.text = "Terms of Service";
+      privacyLink.href = "https://www.salesforce.com/it/company/privacy/";
+      privacyLink.text = "Informativa sulla Privacy";
+      disclosureLink.href = "https://www.salesforce.com/it/company/legal/disclosure/";
+      disclosureLink.text  = "Divulgazione responsabile";
+      trustLink.href = "https://trust.salesforce.com/it";
+      trustLink.text = "Trust";
+      cookiesLink.text = "Cookie Preferences";
+      contactLink.href="https://www.salesforce.com/it/form/contact/contactme/";
+      contactLink.text = "Contatto";
+      choicesLink.text = "Le tue scelte in materia di privacy";
+      rightsElem.textContent = "Tutti i diritti riservati.";
+      copyrightElem.textContent = "I vari marchi commerciali apparengono ai rispettivi proprietari. salesforce.com Italy S.r.l., Piazza Filippo Meda 5, 20121 Milano (MI) Capitale sociale 10.000 euro – Numero REA MI-1785731 P.IVA 04959160963 | Telefono: (+39) 800 693 802";
+      document.title = "Impossibile trovare trovare la pagina desiderata.";
+      break;
+    case "ja-jp":
+      legalLink.text = "リーガル（英語）";
+      tosLink.text = "サービス利用規約";
+      privacyLink.href = "https://www.salesforce.com/jp/company/privacy/";
+      privacyLink.text = "プライバシー";
+      disclosureLink.href = "https://www.salesforce.com/jp/company/legal/disclosure/";
+      disclosureLink.text  = "責任ある開示";
+      trustLink.href = "https://trust.salesforce.com/ja";
+      trustLink.text = "信頼";
+      cookiesLink.text = "Cookieの設定";
+      contactLink.href= "https://www.salesforce.com/jp/form/contact/contactme/";
+      contactLink.text = "お問い合わせ";
+      choicesLink.text = "お客様によるプライバシー設定の選択肢（英語）";
+      rightsElem.textContent = "All rights reserved.";
+      copyrightElem.textContent = " 個々の商標はそれぞれの権利者に帰属します。株式会社セールスフォース・ジャパン 東京都千代田区丸の内1-1-3 日本生命丸の内ガーデンタワー（Salesforce Tower） TEL: 0120-733-257 | 03-4222-1000";
+      document.title = "お探しのページが見つかりませんでした。";
+      break;
+    case "ko-kr":
+      legalLink.text = "법적 정보";
+      tosLink.text = "서비스 약관";
+      privacyLink.href = "https://www.salesforce.com/kr/company/privacy/";
+      privacyLink.text = "개인 정보 보호";
+      disclosureLink.href = "https://www.salesforce.com/company/legal/disclosure/";
+      disclosureLink.text  = "책임 공개";
+      trustLink.href = "https://trust.salesforce.com/ko";
+      trustLink.text = "신뢰";
+      cookiesLink.text = "Cookie Preferences";
+      contactLink.href= "https://www.salesforce.com/kr/form/contact/contactme/";
+      contactLink.text = "문의";
+      choicesLink.text = "귀하의 개인정보 보호 선택";
+      rightsElem.textContent = "All rights reserved.";
+      copyrightElem.textContent = "여러 가지 상표에 대한 소유권은 각 소유자에게 있습니다. 사업자 등록번호 : 120-86-92851 , 대표자 : 벤슨웡 세일즈포스 코리아 서울특별시 영등포구 여의대로 108, 파크원타워2 28층 (세일즈포스) 07335 TEL : 080-822-1378 (솔루션 상담 문의) | 080-805-9651 (기술 지원 문의)";
+      document.title = "찾고 계신 페이지를 찾을 수 없습니다.";
+      break;
+    case "nl-nl":
+      legalLink.text = "Juridisch";
+      tosLink.text = "Terms of Service";
+      privacyLink.href = "https://www.salesforce.com/nl/company/privacy/";
+      privacyLink.text = "Privacyverklaring"
+      disclosureLink.href = "https://www.salesforce.com/nl/company/legal/disclosure/";
+      disclosureLink.text  = "Responsible Disclosure";
+      trustLink.href = "https://trust.salesforce.com/nl";
+      trustLink.text = "Trust";
+      cookiesLink.text = "Cookie-voorkeuren";
+      contactLink.href= "https://www.salesforce.com/nl/form/contact/contactme/";
+      contactLink.text = "Contact";
+      choicesLink.text = "Uw privacybeslissingen";
+      rightsElem.textContent = "Alle rechten voorbehouden.";
+      copyrightElem.textContent = "De diverse handelsmerken zijn eigendom van de respectieve eigenaren. SFDC Netherlands BV, Gustav Mahlerlaan 2970, 1081 LA, Amsterdam, Nederland | Telefoon: 0800 020 0431";
+      document.title = "We konden de pagina die je zoekt, niet vinden."
+      break;
+    case "pt-br":
+      legalLink.text = "Legal";
+      privacyLink.href = "https://www.salesforce.com/br/company/privacy/";
+      privacyLink.text = "Declaração de privacidade"
+      tosLink.text = "Termos de serviços";
+      disclosureLink.href = "https://www.salesforce.com/br/company/legal/disclosure/";
+      disclosureLink.text  = "Divulgação responsável";
+      trustLink.href = "https://trust.salesforce.com/pt";
+      trustLink.text = "Segurança";
+      cookiesLink.text = "Preferências de cookies";      
+      contactLink.href= "https://www.salesforce.com/br/form/contact/contactme/";
+      contactLink.text = "Contato";
+      choicesLink.text = "Privacidade";
+      rightsElem.textContent = "Todos os direitos reservados.";
+      copyrightElem.textContent = "As diversas marcas comerciais pertencem a seus respectivos proprietários. Salesforce Brasil, Av. Jornalista Roberto Marinho, 85 – 14º andar – Cidade Monções, São Paulo – SP, 04575-000 Brasil.";
+      document.title = "Não conseguimos localizar a página que você procura.";
+      break;
+    case "sv-se":
+      legalLink.text = "Legal information";
+      privacyLink.href = "https://www.salesforce.com/se/company/privacy/";
+      privacyLink.text = "Sekretessmeddelande";
+      tosLink.text = "Terms of Service";
+      disclosureLink.href = "https://www.salesforce.com/se/company/legal/disclosure/";
+      disclosureLink.text  = "Responsible Disclosure";
+      trustLink.href = "https://trust.salesforce.com/sv";
+      trustLink.text = "Trust";
+      cookiesLink.text = "Cookie Preferences";
+      contactLink.href= "https://www.salesforce.com/se/form/contact/contactme/";
+      contactLink.text = "Kontakt";
+      choicesLink.text = "Dina integritetsval";
+      rightsElem.textContent = "Med ensamrätt.";
+      copyrightElem.textContent = "Alla varumärken tillhör sina respektive ägare. SFDC SWEDEN AB, Klarabergsviadukten 63, 111 64 Stockholm, Sweden. Telefon: (+46) 200285660";
+      document.title = "Vi kunde inte hitta sidan du letade efter.";
+      break;
+    case "th-th":
+      legalLink.text = "ถูกกฎหมาย";
+      tosLink.text = "เงื่อนไขการให้บริการ";
+      privacyLink.href = "https://www.salesforce.com/th/company/privacy/";
+      privacyLink.text = "ความเป็นส่วนตัว";
+      disclosureLink.href = "https://www.salesforce.com/company/legal/disclosure/";
+      disclosureLink.text  = "การเปิดเผยอย่างมีความรับผิดชอบ";
+      trustLink.href = "https://trust.salesforce.com/";
+      trustLink.text = "ความไว้วางใจ";
+      cookiesLink.text = "Cookie Preferences";      
+      contactLink.href= "https://www.salesforce.com/th/form/contact/contactme/";
+      contactLink.text = "ข้อมูลติดต่อ";
+      choicesLink.text = "ทางเลือกเกี่ยวกับความเป็นส่วนตัวของคุณ";
+      rightsElem.textContent = "สงวนลิขสิทธิ์.";
+      copyrightElem.textContent = "เครื่องหมายการค้าต่างๆ มีเจ้าของและกรรมสิทธิ์";
+      document.title = "เราไม่พบหน้าที่คุณกำลังมองหา.";
+      break;
+    case 'zh-cn':
+      legalLink.text = "法律";
+      tosLink.text = "Terms of Service";
+      privacyLink.href = "https://www.salesforce.com/cn/company/privacy/";
+      privacyLink.text = "隐私声明";
+      disclosureLink.href = "https://www.salesforce.com/company/legal/disclosure/";
+      disclosureLink.text  = "Responsible Disclosure";
+      trustLink.href = "https://trust.salesforce.com/";
+      trustLink.text = "信任";
+      cookiesLink.text = "Cookie 偏好";
+      contactLink.href= "https://www.salesforce.com/cn/form/contact/contactme/";
+      contactLink.text = "联系我们";
+      choicesLink.text = "您的隐私选择";
+      rightsElem.textContent = "保留所有权利.";
+      copyrightElem.textContent = "。 各商标所有权由相应持有人拥有。";
+      document.title = "我们无法找到您要找的页面。";
+      break;
+    case "zh-tw":
+      legalLink.text = "法律";
+      privacyLink.href = "https://www.salesforce.com/tw/company/privacy/";
+      privacyLink.text = "隱私權";
+      tosLink.text = "服務條款";
+      disclosureLink.href = "https://www.salesforce.com/company/legal/disclosure/";
+      disclosureLink.text  = "責任揭露準則";
+      trustLink.href = "https://trust.salesforce.com/";
+      trustLink.text = "信賴";
+      cookiesLink.text = "Cookie Preferences";
+      contactLink.href= "https://www.salesforce.com/tw/form/contact/contactme/";
+      contactLink.text = "連絡方式";
+      choicesLink.text = "您的隱私選擇";
+      rightsElem.textContent = " 保留所有權利.";
+      copyrightElem.textContent = "。各個商標由其各自所有者持有。";
+      document.title = "我們找不到您要找的頁面。";
+      break;
+    default: 
+      legalLink.href = "https://www.salesforce.com/company/legal/";
+      legalLink.text = "Legal";
+      privacyLink.href = "https://www.salesforce.com/company/privacy/";
+      privacyLink.text = "Privacy";
+      tosLink.text = "Terms of Service";
+      tosLink.href= "https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/";
+      contactLink.href="https://www.salesforce.com/form/contact/contactme/";
+      contactLink.text = "Contact";      
+      trustLink.href = "https://trust.salesforce.com/"
+      trustLink.text = "Trust";
+      disclosureLink.href = "https://www.salesforce.com/company/disclosure/";
+      disclosureLink.text  = "Disclosure";
+      cookiesLink.text = "Cookie Preferences";
+      choicesLink.text = "Your Privacy Choices"; 
+      choicesLink.href = "https://www.salesforce.com/form/other/privacy-request/?d=cta-footer-1";
+      document.title = "We couldn't find the page you were looking for.";
+      copyrightElem.textContent = "Various trademarks held by their respective owners. Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States";
+      break;
+  }
+} 
+  </script>
+</html>

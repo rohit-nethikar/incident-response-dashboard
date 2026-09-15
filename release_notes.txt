@@ -1,0 +1,300 @@
+ 
+ Release Notes for the Tableau Embedding API 
+ Tableau Embedding API 
+ API Reference 
+ Release Notes 
+ Tutorial 
+ Samples (GitHub) 
+ Embedding Playground 
+ Toggle Navigation
+ -->
+ Getting Started 
+ Tableau Embedding API 
+ Release Notes 
+ About Tableau Help 
+ Embedding API Tutorial 
+ Samples (GitHub) 
+ Upgrade from Tableau JavaScript API v1 and v2 
+ Embedding Fundamentals 
+ About the Embedding API v3 
+ Access the Embedding API 
+ Basic Embedding 
+ Embed Web Authoring 
+ Embed New Workbook 
+ Embed Ask Data 
+ Configure Embedding Objects and Components 
+ Using Tableau Embedding API React Components 
+ Embedding Tableau Pulse 
+ Embed Tableau Pulse 
+ Format and Customize Tableau Pulse 
+ Filter Tableau Pulse 
+ Add Tableau Pulse Event Listeners 
+ Interactive Embedding 
+ Interact with the View 
+ Filter the View 
+ Add Event Listeners to the View 
+ Get Data from the View 
+ Select Marks in the View 
+ Add a Custom Context Menu 
+ Embed Custom Views 
+ Use Parameters in Embedded Views 
+ Export Embedded Views 
+ Security and Governance 
+ Authentication and Embedding 
+ Tableau Site Settings for Embedding 
+ Customize and Control Data Access 
+ Troubleshooting 
+ Debug and Troubleshoot Embedded Views 
+ Known Issues for the Embedding API v3 
+ Reference 
+ Embedding API Reference 
+ Release Notes for the Tableau Embedding API 
+ Tableau Embedding API version 3.16.0 
+ July 2026 
+ Extended on-demand access support in embedding workflows through capacity-based model licensing with Tableau+ and Tableau Cloud+ editions. For more information, see Capacity-based license model in the Tableau Cloud Help. 
+ June 2026 
+ Tableau Embedding API library: tableau.embedding.3.16.0.js 
+Available on Tableau Cloud and the Tableau CDN. Also available from npm. See Access the Embedding API . 
+ About this release: 
+ Added the getVizQLDataServiceSessionInfo() method to TableauViz and TableauAuthoringViz interfaces. The method returns a new object VizQLDataServiceSessionInfo . This object contains fields vizqlServerSessionId and globalSessionHeader , which are used to query workbook data sources using the VizQL Data Service . 
+ Added DataFormat and SemanticRole to fields in results from getVisualSpecificationAsync . 
+ See also: 
+ Known Issues 
+ Previous Releases 
+ Previous Releases 
+ Tableau Embedding API version 3.15.0 
+ February 2026 
+ Tableau Embedding API library: tableau.embedding.3.15.0.js 
+Available on Tableau Cloud and the Tableau CDN. Also available from npm. See Access the Embedding API . 
+ About this release: 
+ Added ISO values to PeriodType for parameters with Range domain type. 
+ Lazy loading is now the default for the embedded iframe. The iframe loading attribute ( iframe-attr-loading ), now defers loading the embedded iframe until it becomes close to the visual viewport. For more information, see Add iframe attributes . 
+ Tableau Embedding API version 3.14.0 
+ December 2025 
+ Added an additional option for authenticating users of embedded content: unified access tokens (UATs). UATs facilitate authentication to embedded content and control access to content using JSON Web Tokens (JWTs). 
+ September 2025 
+ Tableau Embedding API library: tableau.embedding.3.14.0.js 
+Available on Tableau Cloud, Tableau Server, Tableau Public, and the Tableau CDN. Also available from npm. See Access the Embedding API . 
+ About this release: 
+ Added the launchAnalyticsAssistantAsync method to the Viz and AuthoringViz objects. Calling the method launches the Analytics Assistant (Tableau Agent) side panel. 
+ Added IsAnalyticsAssistantAvailable method to Viz ( TableauViz ) and AuthoringViz ( TableauAuthoringViz ). You can call this method to determine if Analytics Assistant is available for use. 
+ Added the PulseMetricSizeChanged event type to TableauPulse . 
+ Tableau Embedding API version 3.13.0 
+ June 2025 
+ Tableau Embedding API library: tableau.embedding.3.13.0.js 
+Available on Tableau Cloud and the Tableau CDN. Also available from npm. See Access the Embedding API . 
+ About this release: 
+ A React version of the Embedding API v3 library is available from npm. 
+For information about installing and using the Tableau Embedding React package, see Using the Tableau Embedding API React Components . 
+ Added hasAlias and aliasValue attributes to DataValue . 
+ Fixed an issue where calling the applyRangeFilterAsync() method with a max or min of 0 would throw an error. 
+ Tableau Embedding API version 3.12.0 
+ February 2025 
+ Tableau Embedding API library: tableau.embedding.3.12.0.js 
+Available on Tableau Cloud and the Tableau CDN. Also available from npm. See Access the Embedding API . 
+ About this release: 
+ Added user attribute functions (UAF) support for Tableau Server. See Customize and Control Data Access Using User Attributes . 
+ Added <theme-parameter> child elements to Tableau Pulse. You can use these elements to apply custom themes to Tableau Pulse components. For more information, see Format and Customize Tableau Pulse . 
+ Added the applyFilterAsync , applyFiltersAsync , clearFilterAsync , and clearFiltersAsync methods to Tableau Pulse. For more information see Filter Tableau Pulse Metrics . 
+ Added new event types for Tableau Pulse: FirstInteractive , FirstPulseMetricSizeKnown , and PulseUrlChanged events. For more information, see Add Event Listeners to Tableau Pulse . 
+ Added the resize method to Tableau Pulse. You can use this method to adjust the iframe dimensions after a window or container size change. 
+ Added getFiltersAsync method to Tableau Pulse. Use this method to retrieve the list of categorical filters ( CategoricalPulseFilters ) on the Pulse metric. 
+ Added applyTimeDimensionAsync method to Tableau Pulse, which you can use to change the time
+dimension on the Pulse metric. And added getTimeDimensionAsync to Tableau Pulse to get the time dimension
+on the Pulse metric. See Change time dimension of Tableau Pulse . 
+ Added the getDomainAsync method to CategoricalPulseFilter . You can use the getDomainAsync method to retrieve the available values for the given field of the categorical filter. 
+ Added new Tableau Pulse event types for time, filters, and insights: PulseTimeDimensionChanged , PulseFiltersChanged , and PulseInsightDiscovered . 
+ Added the time-dimension attribute to Tableau Pulse, which you can use to apply an initial time
+dimension. See Change time dimension of Tableau Pulse . 
+ Added addFilter method to Tableau Pulse. You can use the method to add initial filters to the Pulse metric. See Filter Tableau Pulse during initialization using web components . 
+ Added <pulse-filter> child element of <tableau-pulse> component, which can be used to add initial filters to apply to the Pulse metric. 
+ Added the clearAllFiltersAsync method to Tableau Pulse to clear all active filters on
+the Pulse metric. 
+ Added the PulseError event to Tableau Pulse. See Adding an event listener for a PulseError event . 
+ Tableau Embedding API version 3.11.0 
+ October 2024 
+ Tableau Embedding API library: tableau.embedding.3.11.0.js 
+Available on Tableau Cloud and the Tableau CDN. Now available from npm. See Access the Embedding API . 
+ About this release: 
+ If you use the getSummaryDataTableReader method, note the following. The DataTableReader returns summary data with the columns sorted in ascending order. If you want to retrieve the summary data with the columns ordered as they appear in the view, you need to do some additional steps. See Sort order and the DataTableReader . 
+ Added a resize method to the Tableau Viz and AuthoringViz objects. You can use method to adjust
+the <iframe> dimensions after a window or container size change. For more information, see Sizing the embedded view . 
+ Added the iframe-attr-loading component attribute, which allows for specifying the embedded
+ loading attribute of the <iframe> . This attribute enables lazy loading, which can improve initial page load times. 
+ Added the iframe-attr-style component attribute, which allows for specifying inline styles on the
+embedded <iframe> . 
+ Added the iframe-attr-class component attribute and <iframe-style> child element, which allow for specifying additional style selectors on the embedded <iframe> . 
+ For more information about using <iframe> attributes, see Add iframe attributes . 
+ Tableau Embedding API version 3.10.0 
+ May 2024 
+ Tableau Embedding API library: tableau.embedding.3.10.0.js 
+Available on Tableau Cloud and the Tableau CDN. Now available from npm. See Access the Embedding API . 
+ About this release: 
+ Fixes a bug to allow a Field to have datatype = DataType.Spatial 
+ Added an attribute, isGeospatial , to Field . 
+ Implemented Field.ColumnType . 
+ Added a layout attribute to <tableau-pulse> web component. For more information, see Control layout of the embedded Pulse metric . 
+ Updated Workbook.showCustomViewAsync() signature so its customViewName parameter is optional. Omitting the customViewName parameter resets any active custom view to the original view. 
+ February 2024 
+ Tableau Embedding API library: tableau.embedding.3.9.0.js 
+Available on Tableau Cloud and the Tableau CDN. Now available from npm. See Access the Embedding API . 
+ About this release: 
+ Published the Tableau Embedding API v3 libraries to the Node Package Manager (npm). You now have a new, modern option in how you use and deploy the Embedding API in your web applications. See Access the Embedding API . 
+ Fixes a bug in the getSelectedMarksAsync method that would cause the formattedValue to be incorrect in multi-pane scenarios. 
+ Fixes an accessibility issue. Screen reader users can now distinguish between
+different vizzes embedded on the same page using the iframe title. 
+ Adds error handling and browser compatibility checks for all the custom elements. 
+ Pro Tip: 
+Checkout the sample code that shows you how you can construct the JSON web token (JWT) when using Tableau Connected Apps with Direct Trust . See the connected-apps-jwt-samples repository on GitHub. This repository contains samples in popular programming languages. 
+ Tableau Embedding API version 3.8.0 
+ December 2023 
+ Tableau Embedding API library: tableau.embedding.3.8.0.js 
+Available on Tableau Cloud and the Tableau CDN. See Access the Embedding API . 
+ About this release: 
+ Note that there was no Embedding API version 3.7.0 release. 
+ Adds support for embedding Tableau Pulse metrics. See Embed Tableau Pulse . 
+ Deprecates the Ask Data web component. 
+ Adds support to control where Tableau content can be embedded using the Update Embedding Settings for Site method in the REST API when a web application uses a Tableau connected app with OAuth 2.0 trust (previously released for Tableau Cloud, now includes Tableau Server). See Tableau Site Settings for Embedding . 
+ Tableau Embedding API version 3.6.0 
+ June 2023 
+ Tableau Embedding API library: tableau.embedding.3.6.0.js 
+Available on Tableau Cloud, Tableau Public, and from the Tableau CDN. See Access the Embedding API . Now available on Tableau Server 2023.3. 
+ About this release: 
+ Improves error handling for embedding views that use a connected app or EAS for authentication. You can now set up an event listener for a viz loading error. This release adds a new event type, TableauEventType.VizLoadError and web attribute onVizLoadErrorEvent . In your event handler, you can now take action depending upon the connected app error codes. For more information, see Error handling for connected apps . 
+ Adds new methods for programmatically exporting or downloading views in various formats, including PDF, PowerPoint, crosstab (CSV), Excel, and image (PNG). The new methods include: Viz.exportPDFAsync() , Viz.exportPowerPointAsync() , and Viz.exportCrosstabAsync() . You can also export the summary data using the new Viz.exportDataAsync() method and you can use the new Worksheet.getSummaryColumnInfoAsync() method to determine the which columns of data to download. For more information, see Export Embedded Views . 
+ To support scenarios where you want users to be able to open a new workbook on a site,
+you can specify a unique URL for each user. For more information, see Embed New Workbook on Tableau . 
+ Adds support to control where Tableau content can be embedded using the Update Embedding Settings for Site method in the REST API when a web application uses a Tableau connected app with OAuth 2.0 trust (Tableau Cloud only). See Tableau Site Settings for Embedding . 
+ For a chance to try out the Embedding API yourself, check out the Tableau Embedding Playground (Early Access) . The playground provides an interactive learning environment for rapidly developing embedded analytics solutions (now in pre-release). Work with sample code and see what’s possible. 
+ Tableau Embedding API version 3.5.0 
+ March 2023 
+ Tableau Embedding API library: tableau.embedding.3.5.0.js 
+Available on Tableau Server, Tableau Cloud, Tableau Public, and from the Tableau CDN. See Access the Embedding API . 
+ About this release: 
+ Adds support for <tableau-ask-data> web component with Connected App support. See Embed Ask Data . 
+ Deprecates the getSummaryDataAsync() method. Use the Worksheet.getSummaryDataReaderAsync method instead. 
+ Adds a helper function to DataTableReader for developers who want to handle the data all at once (with a 4 million row limit). See the getAllPagesAsync() method. 
+ Adds support for passing user attributes from a JSON Web Token (JWT) when authorizing access to embedded content using Tableau Connected Apps. See Control and Customize Data Access Using User Attributes . 
+ Doc update: added topic Use Parameters in Embedded Views 
+ Doc update: MarksInfo type and color are not implemented. 
+ Tableau Embedding API version 3.4.0 
+ December 2022 
+ Tableau Embedding API library: tableau.embedding.3.4.0.js 
+Available on Tableau Cloud, Tableau Public, and from the Tableau CDN. See Access the Embedding API . 
+ About this release: 
+ Adds support for annotating marks added with Worksheet.annotateMarkAsync . 
+ Adds support for getting all annotations on a worksheet with Worksheet.getAnnotationsAsync . 
+ Adds support for removing annotations with Worksheet.removeAnnotationAsync . 
+ Adds support for DataTableReader to support pagination. Created with Worksheet.getSummaryDataReaderAsync ,
+ Worksheet.getUnderlyingTableDataReaderAsync , and DataSource.getLogicalTableDataReaderAsync .
+For more information, see Get Data from the View . 
+ Tableau Embedding API version 3.3.0 
+ October 2022 
+ Tableau Embedding API library: tableau.embedding.3.3.0.js 
+Available on Tableau Server, Tableau Cloud, Tableau Public, and from the Tableau CDN. See Access the Embedding API . 
+ Note: Starting with Tableau 2022.3 (Tableau Server, Tableau Cloud), Tableau uses the Embedding API v3 for the Embed Code (available from the Share dialog box). The Embedding API v3 replaces the Tableau JavaScript API v1 used previously. 
+ About this release: 
+ Adds support for hierarchical filters. 
+ Adds support to initialize custom views. 
+ Prevents the view from reloading after a web component dimension change. 
+ Defines the default size of the view based on the content area specified by the enclosing HTML element. 
+ Implements size for SheetInfo , Worksheet , Dashboard , and DashboardObject . 
+ Adds support for adding event listeners directly on <tableau-viz> web component. 
+ Uses the default dimensions if either the width/height is not defined on the web component 
+ Implements the Workbook.getCustomViewsAsync() , Workbook.showCustomViewAsync() , Workbook.removeCustomViewAsync() , Workbook.saveCustomViewAsync() and
+ Workbook.setActiveCustomViewAsDefaultAsync() methods. 
+ Implements the CustomView.saveAsync() method. 
+ Adds support for initializing story points. 
+ Fixes timing issues with FirstInteractive and FirstVizSizeKnown events. 
+ Adds support for handling custom view events: CustomViewRemoved , CustomViewSaved , and CustomViewSetDefault . 
+ Implements the StoryPointSwitch event. 
+ Adds support for resizing an iframe based on when first sheet size is known. 
+ Supports dynamic resizing of the view based on browser viewport changes. 
+ Implements the Story.activateStoryPointAsync() , Workbook.activateNextStoryPointAsync() ,
+ Workbook.activatePreviousStoryPointAsync() , Workbook.revertStoryPointAsync() methods. 
+ Implements the Sheet.changeSizeAsync() method. 
+ Implements the Viz.getCurrentSrcAsync() method for both the TableauViz and TableauAuthoringViz objects. 
+ Implements the Viz.displayDialogAsync(TableauDialogType.Share) . 
+ Tableau Embedding API version 3.2.0 
+ June 2022 
+ Tableau Embedding API library: tableau.embedding.3.2.0.js 
+Available on Tableau Cloud, Tableau Public, and from the Tableau CDN. See Access the Embedding API . 
+ About this release: 
+ You can insert or remove custom context menus into Uber tooltip on the viz. See
+ appendContextMenuAsync , removeContextMenuAsync , Ubertip and ContextMenuOptions , and the
+ CustomMarkContextMenuEvent event. 
+ If you add custom context menu items to the Uber tooltip ( Worksheet.appendContextMenuAsync() ), you can customize the menu heading and add a tooltip description. By default, the heading for the custom menu item is Embedded . To rename the heading and add a tooltip description, call the Worksheet.renameContextMenuAsync() method. 
+ Introduced TableauAuthoringViz ( <tableau-authoring-viz> custom element) that exposes
+functionality to embed an authoring viz. See Embedded Web Authoring . 
+ Added the ability to hide edit button and suppress default edit behavior for TableauViz and
+ TableauAuthoringViz 
+ Added the ability to hide edit in desktop button for TableauAuthoringViz 
+ Added the ability to hide close button for TableauAuthoringViz 
+ Added functionality to handle WorkbookPublished , WorkbookPublishedAs , WorkbookReadyToClose ,
+ EditButtonClicked , and EditInDesktopButtonClicked events. 
+ Added the ability to automatically parse and switch to the correct mode when you set the src 
+attribute in the <tableau-viz> or <tableau-authoring-viz> web component. 
+ For example, when using a <tableau-viz> element, you can pass in an authoring URL and it will
+automatically get converted to a viewing URL ( https://tableau.com/authoring/workbook/sheet is
+converted to https://tableau.com/views/workbook/sheet ). 
+ This works in reverse as well: passing in a viewing URL into a <tableau-authoring-viz> will automatically convert the URL into an authoring URL. 
+ Having this automatic conversion is great
+for the user because they can use the same URL for both viewing and authoring modes without
+having to worry about getting it right. 
+ In the past, users could pass in an authoring URL into
+ <tableau-viz> and it would actually display correctly in authoring mode. Now it will still
+display correctly, but it will automatically be in viewing mode. - One additional thing to
+note… the URL parsing also handles #/views , which was problematic in the past. Basically,
+the code is more forgiving now and you can just copy and paste a URL from the browser’s address
+bar and use it for embedding. This addresses a constant customer complaint that the URL had to
+be “just right” in order to work in the past. 
+ More support for Tableau events, so now you can create actions based on more interactions. This release adds support for the following events: 
+ ToolbarStateChanged 
+ UrlAction 
+ TabSwitched 
+ ParameterChanged 
+ This release adds support for Tableau parameters. You can now set parameters by adding <viz-parameter> components to the <tableau-viz> web component. The parameter settings take effect at start up. Additionally, the library now supports the methods Workbook.getParametersAsync() and Workbook.changeParameterValueAsync() . 
+ Increased options for exporting from Tableau. You can now call Viz.exportImageAsync() to export images, and call Viz.displayDialogAsync() method to display one of the export dialogs based on the TableauDialogType parameter ( TableauDialogType.ExportPDF , TableauDialogType.ExportPowerPoint , TableauDialogType.ExportData , TableauDialogType.ExportCrossTab , TableauDialogType.ExportWorkbook ). 
+ Added support for the Workbook.activateSheetAsync() method. 
+ Added support for the Workbook.revertAllAsync() method. 
+ Added support for Filter.getAppliedWorksheets() and Filter.setAppliedWorksheets() methods. 
+ Added support for Dashboard.getFiltersAsync() and Dashboard.applyDashboardFilterAsync() methods. 
+ Added support for Worksheet.applyRelativeDateFilterAsync() method. 
+ Added support for the Viz.addFilter() method, used to apply a filter during initialization. This is the JavaScript equivalent of applying a <viz-filter> component to the <tableau-viz> web component. 
+ Tableau Embedding API version 3.1.0 
+ March 2022 
+ Tableau Embedding API library: tableau.embedding.3.1.0.js 
+Available on Tableau Server, Tableau Cloud, Tableau Public, and from the Tableau CDN. See Access the Embedding API . 
+ About this release: 
+ You can now use JavaScript to embed a Tableau view. See Use JavaScript to initialize the API and embed the view . 
+ The Embedding API v3 library is packaged as an ES6 module. 
+ In this release, enums are now exposed and available in the library. For example, you can now use FilterUpdateType.Replace instead of the string literal "replace" . The use of enums is strongly encouraged as it eliminates potential coding errors caused by typos. 
+ You can now refresh data ( refreshDataAsync ) on the Viz object. 
+ You can now redo ( redoAsync ), undo ( undoAsync )and revert all changes ( revertAllAsync ) on the Viz object. 
+ You can check the Viz object to see whether or not automatic updates are paused (using the automaticUpdatesArePaused property), and you can now pause ( pauseAutomaticUpdatesAsync ), resume ( resumeAutomaticUpdatesAsync ), and toggle ( toggleAutomaticUpdatesAsync ) automatic updates. 
+ You can select marks in the worksheet, see selectMarksByValueAsync . 
+ You can now access the Sheet and SheetInfo properties, url and isHidden . 
+ Tableau Embedding API version 3.0.0 
+ December 2021 
+ Tableau Embedding API library: tableau.embedding.3.0.0.js 
+Available on the Tableau CDN. See Access the Embedding API . 
+ Initial release of the Embedding API v3. 
+ About this release: 
+ Introduces the <TableauViz> custom web component that provides all of functionality needed for JavaScript v1 customers (that is, anyone who uses the Embed Code feature on Tableau Server and Tableau Cloud) to migrate to using the Embedding API v3. 
+ This release of the Embedding API v3 provides access to some filtering and get data functionality. See API Reference documentation for the list of methods and properties supported. See Add Filtering . 
+ This release of the Embedding API v3 enables listening to four events: firstvizsizeknown , firstinteractive , markselectionchanged , filterchanged . See the API Reference and Add Events for more details. 
+ The Embedding API v3 supports connected apps and external authorization servers (EAS) as additional ways to authenticate. See Authorization and Embedded Views . For details about setting up these methods, see Register EAS to Enable SSO for Embedded Content (Linux) or Register EAS to Enable SSO for Embedded Content (Windows) , and Configure Tableau Connected Apps to Enable SSO for Embedded Content for more information. 
+ For this release, you need to use the string literal values ( "replace" , "add" , "all" , "remove" ), instead of the FilterUpdateType enumerations (for example, FilterUpdateType.Replace ). 
+ For this release, you need to use the string literal values for the TableauEventType . For example, instead of using the enum TableauEventType.MarkSelectionChanged , you need to use "markselectionchanged" when you add or remove the event listener. 
+ Legal 
+ Terms of Service 
+ Privacy Information 
+ Responsible Disclosure 
+ Trust 
+ Cookie Preferences 
+ Your Privacy Choices 
+ &copy; Copyright Salesforce, Inc. All rights reserved. Various trademarks held by their respective owners.
+ Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States 
+ Documentation last generated on: 2026-09-14 07:54:42 +0000 
+ On This Page 
+ 

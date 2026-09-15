@@ -1,0 +1,103 @@
+VisualSpecification | Tableau Embedding API
+Tableau Embedding API
+Preparing search index...
+VisualSpecification
+Interface VisualSpecification
+interface
+VisualSpecification
+{
+   �
+activeMarksSpecificationIndex
+:
+number
+;
+   �
+columnFields
+:
+FieldInstance
+[]
+;
+   �
+marksSpecifications
+:
+MarksSpecification
+[]
+;
+   �
+rowFields
+:
+FieldInstance
+[]
+;
+}
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/VisualModelInterface.ts:8
+Index
+Properties
+active
+Marks
+Specification
+Index
+column
+Fields
+marks
+Specifications
+row
+Fields
+Properties
+Readonly
+active
+Marks
+Specification
+Index
+activeMarksSpecificationIndex
+:
+number
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/VisualModelInterface.ts:11
+Readonly
+column
+Fields
+columnFields
+:
+FieldInstance
+[]
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/VisualModelInterface.ts:10
+Readonly
+marks
+Specifications
+marksSpecifications
+:
+MarksSpecification
+[]
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/VisualModelInterface.ts:12
+Readonly
+row
+Fields
+rowFields
+:
+FieldInstance
+[]
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/VisualModelInterface.ts:9
+Settings
+Member Visibility
+Protected
+Inherited
+External
+Theme
+OS
+Light
+Dark
+On This Page
+Properties
+active
+Marks
+Specification
+Index
+column
+Fields
+marks
+Specifications
+row
+Fields
+Tableau Embedding API
+Loading...
+&copy; Copyright   Salesforce, Inc.  All rights reserved. Various trademarks held by their respective owners. Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States

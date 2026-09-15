@@ -1,0 +1,120 @@
+ 
+ Embed Custom Views 
+ Tableau Embedding API 
+ API Reference 
+ Release Notes 
+ Tutorial 
+ Samples (GitHub) 
+ Embedding Playground 
+ Toggle Navigation
+ -->
+ Getting Started 
+ Tableau Embedding API 
+ Release Notes 
+ About Tableau Help 
+ Embedding API Tutorial 
+ Samples (GitHub) 
+ Upgrade from Tableau JavaScript API v1 and v2 
+ Embedding Fundamentals 
+ About the Embedding API v3 
+ Access the Embedding API 
+ Basic Embedding 
+ Embed Web Authoring 
+ Embed New Workbook 
+ Embed Ask Data 
+ Configure Embedding Objects and Components 
+ Using Tableau Embedding API React Components 
+ Embedding Tableau Pulse 
+ Embed Tableau Pulse 
+ Format and Customize Tableau Pulse 
+ Filter Tableau Pulse 
+ Add Tableau Pulse Event Listeners 
+ Interactive Embedding 
+ Interact with the View 
+ Filter the View 
+ Add Event Listeners to the View 
+ Get Data from the View 
+ Select Marks in the View 
+ Add a Custom Context Menu 
+ Embed Custom Views 
+ Use Parameters in Embedded Views 
+ Export Embedded Views 
+ Security and Governance 
+ Authentication and Embedding 
+ Tableau Site Settings for Embedding 
+ Customize and Control Data Access 
+ Troubleshooting 
+ Debug and Troubleshoot Embedded Views 
+ Known Issues for the Embedding API v3 
+ Reference 
+ Embedding API Reference 
+ Embed Custom Views 
+ The easiest way to embed a custom view of a dashboard or worksheet in a web application is by specifying the custom view in the source URL. You can use the custom view URL in the src attribute of the <tableau-viz> web component or in the TableauViz JavaScript object. You can also use the methods and properties in the Embedding API v3 to programmatically get, show, and save custom views, or to set a custom view as the default. 
+ The src URL follows the Tableau pattern: 
+ If the URL specifically refers to a custom view, that view is displayed. 
+ If the URL does not refer to a custom view, the default custom view is displayed. 
+ If no default custom view has been defined, the original view is displayed. 
+ This topic describes how you can use the Embedding API v3 methods to get, create, and manage custom views if you want to do more than use the src URL to embed a custom view. 
+ Get all the custom views in a workbook 
+ You can get the names of all the custom views in a workbook by calling the getCustomViewsAsync method. This method returns the collection of CustomView objects associated with the workbook. The following code example shows how you might log the names of the custom views and how you can use the properties of the view to check to see if it was set as the default view. 
+ const customViews = await viz . workbook . getCustomViewsAsync (); 
+ customViews . forEach (( view ) => { 
+ console . log ( ` ' ${ view . name } ' ${ view . default ? ' (default) ' : '' } ` ); 
+ }); 
+ Get the currently active custom view 
+ You can find out if there is a currently active view by checking the workbook property activeCustomView . The following example shows how you can get the name of the view from the property, if there is an active custom view. 
+ const active = viz . workbook . activeCustomView ; 
+ if ( active ) { 
+ console . log ( " Name of the active custom view: " + active . name ); 
+ } else { 
+ console . log ( " No active custom view. " ); 
+ } 
+ Show a custom view 
+ You can programmatically set the embedded view to a specific custom view using the Workbook.showCustomViewAsync() method. 
+The method takes one argument, the name of the custom view ( customViewName ). The method sets the view as the active custom view. 
+ await viz . workbook . showCustomViewAsync ( " West " ); 
+ // do something 
+ If you want to reset the active custom view to the original view, pass in a null value for the customViewName parameter. 
+ await workbook . showCustomViewAsync (); 
+ // do something }); 
+ Save a custom view 
+ You can modify a view by setting filters, parameters, and then save that state as a new custom view. After you modify the state of the view, use the
+ Workbook.saveCustomViewAsync() method to save a new custom view. For example, the follow code snippet applies a filter to the view and then saves that view as a custom view. 
+ async function someFunction () { 
+ await viz . workbook . activeSheet . applyFilterAsync ( " Region " , [ " South " ], " replace " ); 
+ await viz . workbook . saveCustomViewAsync ( " South Only " ); 
+ }; 
+ You can also save the active custom view by calling the saveAsync() method on the CustomView object that is returned by the workbook activeCustomView property. 
+ async function someFunction () { 
+ const active = viz . workbook . activeCustomView ; 
+ // make some changes to the active custom view 
+ await active . saveAsync (); 
+ console . log ( `Saved the active custom view: ' ${ active . name } ' again` ) 
+ }; 
+ Set the custom view as the default view 
+ You can use the setActiveCustomViewAsDefaultAsync() method to make the active custom view the default view. If there is no active custom view, the default view is the original view. 
+ async function someFunction () { 
+ const active = viz . workbook . activeCustomView ; 
+ await viz . workbook . setActiveCustomViewAsDefaultAsync (); 
+ console . log ( `Set active custom view: ' ${ active . name } ' as the default` ); 
+ }; 
+ Remove a custom view 
+ You can remove a custom view by calling the workbook removeCustomViewAsync method. 
+ async function someFunction () { 
+ await viz . workbook . removeCustomViewAsync ( " SomeCustomView " ); 
+ console . log ( " Removed custom view: 'SomeCustomView' " ); 
+ }; 
+ Custom view events 
+ If you want to take action whenever a custom view change occurs, you can add event listeners to detect when a custom view has been loaded ( CustomViewLoaded ), removed ( CustomViewRemoved ), saved ( CustomViewSaved ), or set as the default ( CustomViewSetDefault ). You can use this information about custom views to update your web application. For information about using event listeners, see Add Event Listeners . 
+ Legal 
+ Terms of Service 
+ Privacy Information 
+ Responsible Disclosure 
+ Trust 
+ Cookie Preferences 
+ Your Privacy Choices 
+ &copy; Copyright Salesforce, Inc. All rights reserved. Various trademarks held by their respective owners.
+ Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States 
+ Documentation last generated on: 2026-09-14 07:54:42 +0000 
+ On This Page 
+ 

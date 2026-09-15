@@ -1,0 +1,640 @@
+<!DOCTYPE html[]>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Embed Custom Views</title>
+<meta name="description" content="Documentation for the Tableau Embedding API">
+<link rel="shortcut icon" type="image/png" href="/current/api/embedding_api/en-us/assets/logo.png">
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<!-- Material Symbols for external link icon -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=open_in_new" />
+<link rel="stylesheet" href="/current/api/embedding_api/en-us/css/main.css">
+<link rel="stylesheet" href="/current/api/embedding_api/en-us/css/github-highlight.css">
+
+<!-- OneTrust -->
+<script
+  src="https://a.sfdcstatic.com/enterprise/tableau/prod/2024012/v1/oneTrust/scripttemplates/otSDKStub.js"
+  data-domain-script="2d08f29e-0ede-4e8c-997c-f7ef5be8d4e7"
+  type="text/javascript"
+  charset="UTF-8"
+></script>
+<script type="text/javascript">
+  function OptanonWrapper() {
+    window.addEventListener('load', () => {
+      window.dataLayer.push( { event: 'OneTrustGroupsUpdated' } );
+    });
+  }
+</script>
+<!-- End OneTrust script-->
+
+<script src="/current/api/embedding_api/en-us/js/redirect-to-search.js" ></script>
+<!-- jQuery (required for Bootstrap 5) -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<!-- Bootstrap 5 Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Add this temporarily for mermaid local testing -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad:true,
+    sequence: { showSequenceNumbers: true }, 
+  });
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-BVCN');</script>
+<!-- End Google Tag Manager -->
+
+</head>
+    <body>
+        <div class="container-fluid">
+            <header class="site-header">
+  <div class="wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container-fluid">        
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand navbar-brand-logo" href="/current/api/embedding_api/en-us/index.html">Tableau Embedding API</a>
+          <a href="/current/api/embedding_api/en-us/index.html">
+            <img src="/current/api/embedding_api/en-us/assets/EmbeddingJSAPI.png" alt="Tableau Embedding API" class="embed"/>
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/current/api/embedding_api/en-us/reference/" >API Reference</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/current/api/embedding_api/en-us/docs/embedding_api_release_notes.html">Release Notes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/current/api/embedding_api/en-us/tutorial/tutorial.htm" target="_blank" rel="noreferrer noopener">Tutorial</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/tableau/embedding-api-v3-samples#embedding-api-v3-samples" target="_blank" rel="noreferrer noopener">Samples (GitHub)</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://developer.salesforce.com/tableau/embedding-playground/overview" target="_blank" rel="noreferrer noopener">Embedding Playground</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center" href="https://tableau.com" >
+                <img src="/current/api/embedding_api/en-us/assets/logo.png" alt="Tableau Developers" class="logo" style="height: 24px; width: auto;" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+            <div class="page-layout">
+                
+<div class="well docs-menu col-xs-12 col-sm-4 col-md-3">
+    <div class="search-container form-group has-feedback">
+  <form id="docs-search">
+    <input type="search" id="search-input" class="custom-search form-control" placeholder="Search the docs..." search-url="/current/api/embedding_api/en-us/docs/search.html">
+    <span class="glyphicon glyphicon-search form-control-feedback" ></span>
+  </form>
+</div>
+<!---   <button class="btn btn-sm btn-default toggle-nav" style="margin-bottom: 10px; width: 100%;">
+        <i class="bi bi-arrows-expand"></i> Toggle Navigation
+    </button> -->
+    <ul class="nav nav-list">
+        <li class="nav-header">
+            <a data-bs-toggle="collapse" href="#getstarted" role="button" aria-expanded="false" aria-controls="getstarted" class="collapsed d-flex justify-content-between align-items-center">                              
+                <span>Getting Started</span>
+                <i class="bi bi-chevron-down"></i> 
+            </a>
+            <div class="collapse" id="getstarted">
+                <ul class="nav nav-list">
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/index.html" >Tableau Embedding API</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_release_notes.html" >Release Notes</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_tableau_help.html" >About Tableau Help</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/tutorial/tutorial.htm" target="_blank" rel="noreferrer noopener">Embedding API Tutorial</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/tableau/embedding-api-v3-samples#embedding-api-v3-samples" target="_blank" rel="noreferrer noopener">Samples (GitHub)</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_migration_guide.html" >Upgrade from Tableau JavaScript API v1 and v2</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Embedding Fundamentals Section -->
+        <li class="nav-header">
+            <a data-bs-toggle="collapse" href="#fundamentals" role="button" aria-expanded="false" aria-controls="fundamentals" class="collapsed d-flex justify-content-between align-items-center">
+                <span>Embedding Fundamentals</span>
+                <i class="bi bi-chevron-down"></i>
+            </a>
+            <div class="collapse" id="fundamentals">
+                <ul class="nav nav-list">
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_about.html" >About the Embedding API v3</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_get.html" >Access the Embedding API</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_basic.html" >Basic Embedding</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_web_authoring.html" >Embed Web Authoring</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_new_workbook.html" >Embed New Workbook</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_ask_data.html" >Embed Ask Data</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_configure.html" >Configure Embedding Objects and Components</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_react.html" >Using Tableau Embedding API React Components</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Tableau Pulse Section -->
+        <li class="nav-header">
+            <a data-bs-toggle="collapse" href="#pulse" role="button" aria-expanded="false" aria-controls="pulse" class="collapsed d-flex justify-content-between align-items-center">
+                <span>Embedding Tableau Pulse</span>
+                <i class="bi bi-chevron-down"></i>
+            </a>
+            <div class="collapse" id="pulse">
+                <ul class="nav nav-list">
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_pulse.html" >Embed Tableau Pulse</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_pulse_theme.html" >Format and Customize Tableau Pulse</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_pulse_filter.html" >Filter Tableau Pulse</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_pulse_events.html" >Add Tableau Pulse Event Listeners</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Interactive Embedding Section -->
+        <li class="nav-header">
+            <a data-bs-toggle="collapse" href="#interactive" role="button" aria-expanded="false" aria-controls="interactive" class="collapsed d-flex justify-content-between align-items-center">
+                <span>Interactive Embedding</span>
+                <i class="bi bi-chevron-down"></i>
+            </a>
+            <div class="collapse" id="interactive">
+                <ul class="nav nav-list">
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_interact.html" >Interact with the View</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_filter.html" >Filter the View</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_event.html" >Add Event Listeners to the View</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_data.html" >Get Data from the View</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_select_marks.html" >Select Marks in the View</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_context_menu.html" >Add a Custom Context Menu</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_custom_views.html" class="active">Embed Custom Views</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_parameters.html" >Use Parameters in Embedded Views</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_export.html" >Export Embedded Views</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Security and Governance Section -->
+        <li class="nav-header">
+            <a data-bs-toggle="collapse" href="#security" role="button" aria-expanded="false" aria-controls="security" class="collapsed d-flex justify-content-between align-items-center">
+                <span>Security and Governance</span>
+                <i class="bi bi-chevron-down"></i>
+            </a>
+            <div class="collapse" id="security">
+                <ul class="nav nav-list">
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_auth.html" >Authentication and Embedding</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_site.html" >Tableau Site Settings for Embedding</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_user_attributes.html" >Customize and Control Data Access</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Troubleshooting Section -->
+        <li class="nav-header">
+            <a data-bs-toggle="collapse" href="#troubleshooting" role="button" aria-expanded="false" aria-controls="troubleshooting" class="collapsed d-flex justify-content-between align-items-center">
+                <span>Troubleshooting</span>
+                <i class="bi bi-chevron-down"></i>
+            </a>
+            <div class="collapse" id="troubleshooting">
+                <ul class="nav nav-list">
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_troubleshoot.html" >Debug and Troubleshoot Embedded Views</a>
+                    </li>
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/docs/embedding_api_known_issues.html" >Known Issues for the Embedding API v3</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Reference Section -->
+        <li class="nav-header">
+            <a data-bs-toggle="collapse" href="#reference" role="button" aria-expanded="false" aria-controls="reference" class="collapsed d-flex justify-content-between align-items-center">
+                <span>Reference</span>
+                <i class="bi bi-chevron-down"></i>
+            </a>
+            <div class="collapse" id="reference">
+                <ul class="nav nav-list">
+                    <li>
+                        <a href="/current/api/embedding_api/en-us/reference/index.html" target="_blank" rel="noreferrer noopener" >Embedding API Reference</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Bootstrap collapse
+    const collapseElements = document.querySelectorAll('.collapse');
+    collapseElements.forEach(collapse => {
+        new bootstrap.Collapse(collapse, {
+            toggle: false
+        });
+    });
+
+    // Handle section header clicks - let Bootstrap handle the toggle behavior
+    const sectionHeaders = document.querySelectorAll('.nav-header > a');
+    sectionHeaders.forEach(header => {
+        header.addEventListener('click', function(e) {
+            // Bootstrap will automatically handle the toggle behavior
+            // No need to manually close other sections
+        });
+    });
+
+    // Expand the section containing the active page
+    const activeLink = document.querySelector('.nav-list li a.active');
+    if (activeLink) {
+        const parentSection = activeLink.closest('.collapse');
+        if (parentSection) {
+            const sectionHeader = document.querySelector(`[aria-controls="${parentSection.id}"]`);
+            if (sectionHeader) {
+                const collapse = bootstrap.Collapse.getInstance(parentSection);
+                if (collapse) {
+                    collapse.show();
+                }
+            }
+        }
+    }
+});
+</script>
+
+                <div class="content .col-xs-12 .col-sm-8 .col-md-9">
+                    <h1>Embed Custom Views</h1>
+                    
+                    <br />
+                    <p>The easiest way to embed a custom view of a dashboard or worksheet in a web application is by specifying the custom view in the source URL. You can use the custom view URL in the <code class="language-plaintext highlighter-rouge">src</code> attribute of the <code class="language-plaintext highlighter-rouge">&lt;tableau-viz&gt;</code> web component or in the <code class="language-plaintext highlighter-rouge">TableauViz</code> JavaScript object. You can also use the methods and properties in the Embedding API v3 to programmatically get, show, and save custom views, or to set a custom view as the default.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">src</code> URL follows the Tableau pattern:</p>
+
+<ul>
+  <li>
+    <p>If the URL specifically refers to a custom view, that view is displayed.</p>
+  </li>
+  <li>
+    <p>If the URL does not refer to a custom view, the default custom view is displayed.</p>
+  </li>
+  <li>
+    <p>If no default custom view has been defined, the original view is displayed.</p>
+  </li>
+</ul>
+
+<p>This topic describes how you can use the Embedding API v3 methods to get, create, and manage custom views if you want to do more than use the <code class="language-plaintext highlighter-rouge">src</code> URL to embed a custom view.</p>
+
+<hr />
+
+<h2 id="get-all-the-custom-views-in-a-workbook">Get all the custom views in a workbook</h2>
+
+<p>You can get the names of all the custom views in a workbook by calling the <code class="language-plaintext highlighter-rouge">getCustomViewsAsync</code> method. This method returns the collection of <code class="language-plaintext highlighter-rouge">CustomView</code> objects associated with the workbook. The following code example shows how you might log the names of the custom views and how you can use the properties of the view to check to see if it was set as the default view.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">customViews</span> <span class="o">=</span>  <span class="k">await</span> <span class="nx">viz</span><span class="p">.</span><span class="nx">workbook</span><span class="p">.</span><span class="nf">getCustomViewsAsync</span><span class="p">();</span>
+
+<span class="nx">customViews</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">view</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log </span><span class="p">(</span><span class="s2">`   '</span><span class="p">${</span><span class="nx">view</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">' </span><span class="p">${</span><span class="nx">view</span><span class="p">.</span><span class="k">default</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">(default)</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="get-the-currently-active-custom-view">Get the currently active custom view</h2>
+
+<p>You can find out if there is a currently active view by checking the workbook property <code class="language-plaintext highlighter-rouge">activeCustomView</code>. The following example shows how you can get the name of the view from the property, if there is an active custom view.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">const</span> <span class="nx">active</span> <span class="o">=</span> <span class="nx">viz</span><span class="p">.</span><span class="nx">workbook</span><span class="p">.</span><span class="nx">activeCustomView</span><span class="p">;</span>
+<span class="k">if </span><span class="p">(</span><span class="nx">active</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log </span><span class="p">(</span><span class="dl">"</span><span class="s2">Name of the active custom view: </span><span class="dl">"</span>  <span class="o">+</span> <span class="nx">active</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log </span><span class="p">(</span><span class="dl">"</span><span class="s2">No active custom view.</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h2 id="show-a-custom-view">Show a custom view</h2>
+
+<p>You can programmatically set the embedded view to a specific custom view using the <code class="language-plaintext highlighter-rouge">Workbook.showCustomViewAsync()</code> method.<br />
+The method takes one argument, the name of the custom view (<code class="language-plaintext highlighter-rouge">customViewName</code>). The method sets the view as the active custom view.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">viz</span><span class="p">.</span><span class="nx">workbook</span><span class="p">.</span><span class="nf">showCustomViewAsync</span><span class="p">(</span><span class="dl">"</span><span class="s2">West</span><span class="dl">"</span><span class="p">);</span>
+ <span class="c1">// do something </span>
+</code></pre></div></div>
+
+<p>If you want to reset the active custom view to the original view, pass in a null value for the <code class="language-plaintext highlighter-rouge">customViewName</code> parameter.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">workbook</span><span class="p">.</span><span class="nf">showCustomViewAsync</span><span class="p">();</span>
+ <span class="c1">// do something });</span>
+</code></pre></div></div>
+
+<h2 id="save-a-custom-view">Save a custom view</h2>
+
+<p>You can modify a view by setting filters, parameters, and then save that state as a new custom view. After you modify the state of the view, use the
+<code class="language-plaintext highlighter-rouge">Workbook.saveCustomViewAsync()</code> method to save a new custom view. For example, the follow code snippet applies a filter to the view and then saves that view as a custom view.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">someFunction</span><span class="p">()</span> <span class="p">{</span>
+   <span class="k">await</span> <span class="nx">viz</span><span class="p">.</span><span class="nx">workbook</span><span class="p">.</span><span class="nx">activeSheet</span><span class="p">.</span><span class="nf">applyFilterAsync</span><span class="p">(</span><span class="dl">"</span><span class="s2">Region</span><span class="dl">"</span><span class="p">,</span> <span class="p">[</span><span class="dl">"</span><span class="s2">South</span><span class="dl">"</span><span class="p">],</span> <span class="dl">"</span><span class="s2">replace</span><span class="dl">"</span><span class="p">);</span>
+   <span class="k">await</span> <span class="nx">viz</span><span class="p">.</span><span class="nx">workbook</span><span class="p">.</span><span class="nf">saveCustomViewAsync</span><span class="p">(</span><span class="dl">"</span><span class="s2">South Only</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>You can also save the active custom view by calling the <code class="language-plaintext highlighter-rouge">saveAsync()</code> method on the <code class="language-plaintext highlighter-rouge">CustomView</code> object that is returned by the workbook <code class="language-plaintext highlighter-rouge">activeCustomView</code> property.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">someFunction</span><span class="p">()</span>  <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">active</span> <span class="o">=</span> <span class="nx">viz</span><span class="p">.</span><span class="nx">workbook</span><span class="p">.</span><span class="nx">activeCustomView</span><span class="p">;</span>
+    <span class="c1">// make some changes to the active custom view</span>
+    <span class="k">await</span> <span class="nx">active</span><span class="p">.</span><span class="nf">saveAsync</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Saved the active custom view: '</span><span class="p">${</span><span class="nx">active</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">' again`</span> <span class="p">)</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h2 id="set-the-custom-view-as-the-default-view">Set the custom view as the default view</h2>
+
+<p>You can use the <code class="language-plaintext highlighter-rouge">setActiveCustomViewAsDefaultAsync()</code> method to make the active custom view the default view. If there is no active custom view, the default view is the original view.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">someFunction</span><span class="p">()</span>  <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">active</span> <span class="o">=</span> <span class="nx">viz</span><span class="p">.</span><span class="nx">workbook</span><span class="p">.</span><span class="nx">activeCustomView</span><span class="p">;</span>
+    <span class="k">await</span> <span class="nx">viz</span><span class="p">.</span><span class="nx">workbook</span><span class="p">.</span><span class="nf">setActiveCustomViewAsDefaultAsync</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Set active custom view: '</span><span class="p">${</span><span class="nx">active</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">' as the default`</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h2 id="remove-a-custom-view">Remove a custom view</h2>
+
+<p>You can remove a custom view by calling the workbook <code class="language-plaintext highlighter-rouge">removeCustomViewAsync</code> method.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">someFunction</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">viz</span><span class="p">.</span><span class="nx">workbook</span><span class="p">.</span><span class="nf">removeCustomViewAsync</span><span class="p">(</span><span class="dl">"</span><span class="s2">SomeCustomView</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Removed custom view: 'SomeCustomView'</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h2 id="custom-view-events">Custom view events</h2>
+
+<p>If you want to take action whenever a custom view change occurs, you can add event listeners to detect when a custom view has been loaded (<code class="language-plaintext highlighter-rouge">CustomViewLoaded</code>), removed (<code class="language-plaintext highlighter-rouge">CustomViewRemoved</code>), saved (<code class="language-plaintext highlighter-rouge">CustomViewSaved</code>), or set as the default (<code class="language-plaintext highlighter-rouge">CustomViewSetDefault</code>). You can use this information about custom views to update your web application. For information about using event listeners, see <a href="/current/api/embedding_api/en-us/docs/embedding_api_event.html">Add Event Listeners</a>.</p>
+
+                    <br />
+                    <iframe src="" style="width: 100%; border: none;" id="i-feedback-form"></iframe>
+<script>
+    const iframe = document.getElementById('i-feedback-form');
+
+    let origin = window.location.origin;
+    if (!(origin.includes("tableau.com") || origin.includes("tabint.net"))) {
+        origin = "https://help.dev.tabint.net"
+    }
+
+    iframe.src = origin + "/widgets/feedback/index.html";
+    
+    iframe.onload = function() {
+        const parentLocation = window.location.href;
+        iframe.contentWindow.postMessage({type: 'location', location: parentLocation});
+    }
+
+    window.addEventListener('message', function(event) {
+        if (event.origin !== window.location.origin) {
+            return; 
+        }    
+       
+        if (event.data.action === 'resize') {
+            iframe.style.height = event.data.height + 20 + 'px';
+        }
+    });
+</script>
+                    <!-- Footer -->
+<footer>
+    <hr class="footer-hr">
+    <nav aria-label="Footer Navigation">
+        <ul class="footer-links">
+            <li><a href="https://www.salesforce.com/company/legal/">Legal</a></li>
+            <li><a href="https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/">Terms of Service</a></li>
+            <li><a href="https://www.salesforce.com/company/privacy/">Privacy Information</a></li>
+            <li><a href="https://www.salesforce.com/company/legal/disclosure/">Responsible Disclosure</a></li>
+            <li><a href="https://trust.salesforce.com/">Trust</a></li>
+            <li><a href="#" data-ignore-geolocation="true" class="optanon-toggle-display">Cookie Preferences</a></li>
+            <li><a href="https://www.salesforce.com/form/other/privacy-request/">Your Privacy Choices</a></li>
+        </ul>
+        <p class="copyRight">&copy; Copyright <script>document.write(new Date().getFullYear())</script> Salesforce, Inc. <a href="https://www.salesforce.com/company/legal/tmcusageguidelines/">All rights reserved.</a> Various trademarks held by their respective owners.
+            Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States</p>
+        <sub>Documentation last generated on: 2026-09-14 07:54:42 +0000</sub></p>
+    </nav>
+</footer>
+
+                    <script>
+var codeBlocks = document.querySelectorAll('pre.highlight');
+
+codeBlocks.forEach(function (codeBlock) {
+  var copyButton = document.createElement('button');
+  copyButton.className = 'copy';
+  copyButton.type = 'button';
+  copyButton.ariaLabel = 'Copy code to clipboard';
+  copyButton.innerText = 'Copy';
+
+  codeBlock.append(copyButton);
+
+  copyButton.addEventListener('click', function () {
+    var code = codeBlock.querySelector('code').innerText.trim();
+    window.navigator.clipboard.writeText(code);
+
+    copyButton.innerText = 'Copied';
+    var fourSeconds = 4000;
+
+    setTimeout(function () {
+      copyButton.innerText = 'Copy';
+    }, fourSeconds);
+  });
+});
+</script>
+                </div>
+                <!-- Right-side Table of Contents -->
+<div class="page-toc-container">
+    <div class="page-toc">
+        <h4>On This Page</h4>
+        <nav id="page-toc-nav">
+            <!-- TOC will be generated by JavaScript -->
+        </nav>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Generate TOC from page headings
+    const content = document.querySelector('.content');
+    const tocNav = document.getElementById('page-toc-nav');
+    
+    if (!content || !tocNav) return;
+    
+    // Find all h2 and h3 headings in the content
+    const headings = content.querySelectorAll('h2, h3');
+    
+    if (headings.length === 0) {
+        // Hide TOC if no headings found
+        document.querySelector('.page-toc-container').style.display = 'none';
+        return;
+    }
+    
+    // Generate IDs for headings if they don't have them
+    headings.forEach((heading, index) => {
+        if (!heading.id) {
+            heading.id = 'heading-' + index;
+        }
+    });
+    
+    // Build TOC HTML
+    let tocHTML = '<ul class="toc-list">';
+    headings.forEach(heading => {
+        const level = heading.tagName.toLowerCase();
+        const text = heading.textContent;
+        const id = heading.id;
+        const className = level === 'h3' ? 'toc-item toc-item-sub' : 'toc-item';
+        
+        tocHTML += `<li class="${className}">
+            <a href="#${id}" class="toc-link" data-target="${id}">${text}</a>
+        </li>`;
+    });
+    tocHTML += '</ul>';
+    
+    tocNav.innerHTML = tocHTML;
+    
+    // Scroll tracking functionality
+    const tocLinks = tocNav.querySelectorAll('.toc-link');
+    const headingPositions = Array.from(headings).map(heading => ({
+        id: heading.id,
+        top: heading.offsetTop
+    }));
+    
+    function updateActiveTocItem() {
+        const scrollPosition = window.scrollY + 100; // Offset for better UX
+        
+        // Find the current heading
+        let currentHeadingId = headingPositions[0].id;
+        for (let i = headingPositions.length - 1; i >= 0; i--) {
+            if (scrollPosition >= headingPositions[i].top) {
+                currentHeadingId = headingPositions[i].id;
+                break;
+            }
+        }
+        
+        // Update active state
+        tocLinks.forEach(link => {
+            if (link.dataset.target === currentHeadingId) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+    
+    // Smooth scroll when clicking TOC links
+    tocLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.dataset.target;
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Update URL hash
+                history.pushState(null, null, '#' + targetId);
+            }
+        });
+    });
+    
+    // Listen for scroll events
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+        if (scrollTimeout) {
+            window.cancelAnimationFrame(scrollTimeout);
+        }
+        scrollTimeout = window.requestAnimationFrame(updateActiveTocItem);
+    });
+    
+    // Initial update
+    updateActiveTocItem();
+    
+    // Update positions on window resize
+    window.addEventListener('resize', function() {
+        headingPositions.forEach((item, index) => {
+            item.top = headings[index].offsetTop;
+        });
+        updateActiveTocItem();
+    });
+});
+</script>
+
+            </div>
+        </div>
+    </body>
+</html>

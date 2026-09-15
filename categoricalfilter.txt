@@ -1,0 +1,381 @@
+CategoricalFilter | Tableau Embedding API
+Tableau Embedding API
+Preparing search index...
+CategoricalFilter
+Interface CategoricalFilter
+A Categorical Filter
+interface
+CategoricalFilter
+{
+   �
+appliedValues
+:
+DataValue
+[]
+;
+   �
+fieldId
+:
+string
+;
+   �
+fieldName
+:
+string
+;
+   �
+filterType
+:
+FilterType
+;
+   �
+isAllSelected
+?:
+boolean
+;
+   �
+isExcludeMode
+:
+boolean
+;
+   �
+worksheetName
+:
+string
+;
+   �
+getAppliedWorksheetsAsync
+()
+:
+Promise
+<
+string
+[]
+>
+;
+   �
+getDomainAsync
+(
+domainType
+?:
+FilterDomainType
+)
+:
+Promise
+<
+CategoricalDomain
+>
+;
+   �
+getFieldAsync
+()
+:
+Promise
+<
+Field
+>
+;
+   �
+setAppliedWorksheetsAsync
+(
+applyToWorksheets
+:
+string
+[]
+)
+:
+Promise
+<
+string
+[]
+>
+;
+}
+Hierarchy (
+View Summary
+)
+Filter
+CategoricalFilter
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:65
+Index
+Methods
+get
+Applied
+Worksheets
+Async
+get
+Domain
+Async
+get
+Field
+Async
+set
+Applied
+Worksheets
+Async
+Properties
+applied
+Values
+field
+Id
+field
+Name
+filter
+Type
+is
+All
+Selected?
+is
+Exclude
+Mode
+worksheet
+Name
+Methods
+get
+Applied
+Worksheets
+Async
+getAppliedWorksheetsAsync
+()
+:
+Promise
+<
+string
+[]
+>
+Returns
+Promise
+<
+string
+[]
+>
+the list of worksheet names that have the filter applied.
+Inherited from
+Filter
+.
+getAppliedWorksheetsAsync
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:49
+get
+Domain
+Async
+getDomainAsync
+(
+domainType
+?:
+FilterDomainType
+)
+:
+Promise
+<
+CategoricalDomain
+>
+Parameters
+Optional
+domainType
+:
+FilterDomainType
+Returns
+Promise
+<
+CategoricalDomain
+>
+a promise containing the categorical domain for the filter. Note if a filter contains
+multiple fields (such as a filter action with multiple fields), the values array in the returned
+CategoricalDomain (
+CategoricalDomain.values
+) will be empty. If there are multiple fields
+in the filter, the results need to be represented by a table, which is not currently supported.
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:91
+get
+Field
+Async
+getFieldAsync
+()
+:
+Promise
+<
+Field
+>
+Returns
+Promise
+<
+Field
+>
+a promise containing the field for the filter.
+Inherited from
+Filter
+.
+getFieldAsync
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:43
+set
+Applied
+Worksheets
+Async
+setAppliedWorksheetsAsync
+(
+applyToWorksheets
+:
+string
+[]
+)
+:
+Promise
+<
+string
+[]
+>
+Applies the filter to the specified list of worksheets.
+If the worksheet(s) do not exist or do not contain the field in their data sources, an exception is thrown.
+Parameters
+applyToWorksheets
+:
+string
+[]
+list of worksheets to apply the filter on
+Returns
+Promise
+<
+string
+[]
+>
+the list of worksheet names that have the filter applied
+Inherited from
+Filter
+.
+setAppliedWorksheetsAsync
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:59
+Properties
+Readonly
+applied
+Values
+appliedValues
+:
+DataValue
+[]
+Returns
+A list of values applied to this categorical filter. Notice that if this is a
+dependent filter, the current relavent values can be fetched by calling
+getDomainAsync(tableau.FilterDomainType.Relevant)
+.
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:78
+Readonly
+field
+Id
+fieldId
+:
+string
+Returns
+The id of the field being filtered.
+Inherited from
+Filter
+.
+fieldId
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:37
+Readonly
+field
+Name
+fieldName
+:
+string
+Returns
+The name of the field being filtered.  Note that this is the caption
+as shown in the UI, and not the actual database field name.
+Inherited from
+Filter
+.
+fieldName
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:31
+Readonly
+filter
+Type
+filterType
+:
+FilterType
+Returns
+The type of the filter.
+Inherited from
+Filter
+.
+filterType
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:25
+Optional
+Readonly
+is
+All
+Selected
+isAllSelected
+?:
+boolean
+Returns
+True if all the values are selected for this filter. When 'All' is selected,
+appliedValues returns an empty list.
+This field is available in Tableau 2019.2 or later
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:72
+Readonly
+is
+Exclude
+Mode
+isExcludeMode
+:
+boolean
+Returns
+True if this filter is an exclude filter, false if an include filter.
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:83
+Readonly
+worksheet
+Name
+worksheetName
+:
+string
+Returns
+The parent worksheet.
+Inherited from
+Filter
+.
+worksheetName
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:20
+Settings
+Member Visibility
+Protected
+Inherited
+External
+Theme
+OS
+Light
+Dark
+On This Page
+Methods
+get
+Applied
+Worksheets
+Async
+get
+Domain
+Async
+get
+Field
+Async
+set
+Applied
+Worksheets
+Async
+Properties
+applied
+Values
+field
+Id
+field
+Name
+filter
+Type
+is
+All
+Selected
+is
+Exclude
+Mode
+worksheet
+Name
+Tableau Embedding API
+Loading...
+&copy; Copyright   Salesforce, Inc.  All rights reserved. Various trademarks held by their respective owners. Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States

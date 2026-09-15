@@ -1,0 +1,2597 @@
+Worksheet | Tableau Embedding API
+Tableau Embedding API
+Preparing search index...
+Worksheet
+Interface Worksheet
+interface
+Worksheet
+{
+   �
+index
+:
+number
+;
+   �
+isActive
+:
+boolean
+;
+   �
+isHidden
+:
+boolean
+;
+   �
+name
+:
+string
+;
+   �
+parentDashboard
+:
+null
+|
+Dashboard
+;
+   �
+parentStoryPoint
+:
+null
+|
+StoryPoint
+;
+   �
+sheetType
+:
+SheetType
+;
+   �
+size
+:
+SheetSize
+;
+   �
+url
+:
+string
+;
+   �
+workbook
+:
+Workbook
+;
+   �
+annotateMarkAsync
+(
+mark
+:
+MarkInfo
+,
+annotationText
+:
+string
+)
+:
+Promise
+<
+void
+>
+;
+   �
+appendContextMenuAsync
+(
+       �
+targetMenu
+:
+Ubertip
+,
+       �
+config
+:
+ContextMenuOptions
+,
+   �
+)
+:
+Promise
+<
+string
+>
+;
+   �
+applyFilterAsync
+(
+       �
+fieldName
+:
+string
+,
+       �
+values
+:
+string
+[]
+,
+       �
+updateType
+:
+FilterUpdateType
+,
+       �
+filterOptions
+:
+FilterOptions
+,
+   �
+)
+:
+Promise
+<
+string
+>
+;
+   �
+applyHierarchicalFilterAsync
+(
+       �
+fieldName
+:
+string
+,
+       �
+values
+:
+string
+[]
+|
+HierarchicalLevels
+,
+       �
+updateType
+:
+FilterUpdateType
+,
+       �
+options
+:
+FilterOptions
+,
+   �
+)
+:
+Promise
+<
+string
+>
+;
+   �
+applyRangeFilterAsync
+(
+       �
+fieldName
+:
+string
+,
+       �
+filterOptions
+:
+RangeFilterOptions
+,
+   �
+)
+:
+Promise
+<
+string
+>
+;
+   �
+applyRelativeDateFilterAsync
+(
+       �
+fieldName
+:
+string
+,
+       �
+options
+:
+RelativeDateFilterOptions
+,
+   �
+)
+:
+Promise
+<
+string
+>
+;
+   �
+changeSizeAsync
+(
+sheetSize
+:
+SheetSize
+)
+:
+Promise
+<
+SheetSize
+>
+;
+   �
+clearFilterAsync
+(
+fieldName
+:
+string
+)
+:
+Promise
+<
+string
+>
+;
+   �
+clearSelectedMarksAsync
+()
+:
+Promise
+<
+void
+>
+;
+   �
+executeContextMenuAsync
+(
+       �
+targetMenu
+:
+Ubertip
+,
+       �
+menuItemId
+:
+string
+,
+   �
+)
+:
+Promise
+<
+void
+>
+;
+   �
+getAnnotationsAsync
+()
+:
+Promise
+<
+Annotation
+[]
+>
+;
+   �
+getDataSourcesAsync
+()
+:
+Promise
+<
+DataSource
+[]
+>
+;
+   �
+getFiltersAsync
+()
+:
+Promise
+<
+Filter
+[]
+>
+;
+   �
+getSelectedMarksAsync
+()
+:
+Promise
+<
+MarksCollection
+>
+;
+   �
+getSummaryColumnsInfoAsync
+()
+:
+Promise
+<
+Column
+[]
+>
+;
+   �
+getSummaryDataAsync
+(
+options
+?:
+GetSummaryDataOptions
+)
+:
+Promise
+<
+DataTable
+>
+;
+   �
+getSummaryDataReaderAsync
+(
+       �
+pageRowCount
+?:
+number
+,
+       �
+options
+?:
+GetSummaryDataOptions
+,
+   �
+)
+:
+Promise
+<
+DataTableReader
+>
+;
+   �
+getUnderlyingDataAsync
+(
+       �
+options
+?:
+GetUnderlyingDataOptions
+,
+   �
+)
+:
+Promise
+<
+DataTable
+>
+;
+   �
+getUnderlyingTableDataAsync
+(
+       �
+logicalTableId
+:
+string
+,
+       �
+options
+?:
+GetUnderlyingDataOptions
+,
+   �
+)
+:
+Promise
+<
+DataTable
+>
+;
+   �
+getUnderlyingTableDataReaderAsync
+(
+       �
+logicalTableId
+:
+string
+,
+       �
+pageRowCount
+?:
+number
+,
+       �
+options
+?:
+GetUnderlyingDataOptions
+,
+   �
+)
+:
+Promise
+<
+DataTableReader
+>
+;
+   �
+getUnderlyingTablesAsync
+()
+:
+Promise
+<
+LogicalTable
+[]
+>
+;
+   �
+getVisualSpecificationAsync
+()
+:
+Promise
+<
+VisualSpecification
+>
+;
+   �
+removeAnnotationAsync
+(
+annotation
+:
+Annotation
+)
+:
+Promise
+<
+void
+>
+;
+   �
+removeContextMenuAsync
+(
+       �
+targetMenu
+:
+Ubertip
+,
+       �
+menuItemId
+:
+string
+,
+   �
+)
+:
+Promise
+<
+void
+>
+;
+   �
+renameContextMenuAsync
+(
+       �
+targetMenu
+:
+Ubertip
+,
+       �
+menuHeader
+:
+string
+,
+       �
+menuDescription
+:
+string
+,
+   �
+)
+:
+Promise
+<
+void
+>
+;
+   �
+selectMarksByValueAsync
+(
+       �
+selections
+:
+SelectionCriteria
+[]
+,
+       �
+updateType
+:
+SelectionUpdateType
+,
+   �
+)
+:
+Promise
+<
+void
+>
+;
+}
+Hierarchy (
+View Summary
+)
+Sheet
+Worksheet
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:136
+Index
+Methods
+annotate
+Mark
+Async
+append
+Context
+Menu
+Async
+apply
+Filter
+Async
+apply
+Hierarchical
+Filter
+Async
+apply
+Range
+Filter
+Async
+apply
+Relative
+Date
+Filter
+Async
+change
+Size
+Async
+clear
+Filter
+Async
+clear
+Selected
+Marks
+Async
+execute
+Context
+Menu
+Async
+get
+Annotations
+Async
+get
+Data
+Sources
+Async
+get
+Filters
+Async
+get
+Selected
+Marks
+Async
+get
+Summary
+Columns
+Info
+Async
+get
+Summary
+Data
+Async
+get
+Summary
+Data
+Reader
+Async
+get
+Underlying
+Data
+Async
+get
+Underlying
+Table
+Data
+Async
+get
+Underlying
+Table
+Data
+Reader
+Async
+get
+Underlying
+Tables
+Async
+get
+Visual
+Specification
+Async
+remove
+Annotation
+Async
+remove
+Context
+Menu
+Async
+rename
+Context
+Menu
+Async
+select
+Marks
+By
+Value
+Async
+Properties
+index
+is
+Active
+is
+Hidden
+name
+parent
+Dashboard
+parent
+Story
+Point
+sheet
+Type
+size
+url
+workbook
+Methods
+annotate
+Mark
+Async
+annotateMarkAsync
+(
+mark
+:
+MarkInfo
+,
+annotationText
+:
+string
+)
+:
+Promise
+<
+void
+>
+Add an annotation to the specified mark.
+This is intended to be passed a MarkInfo object received from a DataTable.
+MarkInfo can be found in the DataTable returned from getSelectedMarksAsync.
+Parameters
+mark
+:
+MarkInfo
+The mark to annotate.
+annotationText
+:
+string
+The text to display in the annotation.
+Returns
+Promise
+<
+void
+>
+Empty promise that resolves when the annotation is complete.
+The following example shows how you might call this method using a MarkInfo object.
+const
+markCollection
+=
+await
+worksheet
+.
+getSelectedMarksAsync
+();
+const
+markToAnnotate
+=
+marksCollection
+.
+data
+[
+0
+].
+marksInfo
+[
+0
+];
+await
+worksheet
+.
+annotateMarkAsync
+(
+markToAnnotate
+,
+'Manufacturing line #2 shutdown triggered'
+);
+Copy
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:535
+append
+Context
+Menu
+Async
+appendContextMenuAsync
+(
+   �
+targetMenu
+:
+Ubertip
+,
+   �
+config
+:
+ContextMenuOptions
+,
+)
+:
+Promise
+<
+string
+>
+Adds external context menu item into location defined by targetMenu input parameter.
+Calling this function does not have immediate affect, it just registers new menu item.
+When the corresponding context menu is later shown, the new menu item is also rendered there.
+The return value of this function is the unique identifier for the newly inserted context menu item.
+When the user clicks the new context menu item, a TableauEvent is raised.
+Each targetMenu parameter will have a different event type.
+The unique identifier could be used to distinguish different menu items that have the same event type.
+Parameters
+targetMenu
+:
+Ubertip
+Defines where to insert the new external menu item.
+config
+:
+ContextMenuOptions
+Provides configuration information for new external menu item.
+Returns
+Promise
+<
+string
+>
+Unique identifier for newly inserted context menu item.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:586
+apply
+Filter
+Async
+applyFilterAsync
+(
+   �
+fieldName
+:
+string
+,
+   �
+values
+:
+string
+[]
+,
+   �
+updateType
+:
+FilterUpdateType
+,
+   �
+filterOptions
+:
+FilterOptions
+,
+)
+:
+Promise
+<
+string
+>
+Applies the list of provided categorical filter values.
+Parameters
+fieldName
+:
+string
+The name of the field to filter on.
+values
+:
+string
+[]
+The list of values to filter on.
+updateType
+:
+FilterUpdateType
+The update type of this filter (add, all, remove, replace).
+filterOptions
+:
+FilterOptions
+Advanced filter options (isExcludeMode).
+Returns
+Promise
+<
+string
+>
+The field name that the filter is applied on.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:385
+apply
+Hierarchical
+Filter
+Async
+applyHierarchicalFilterAsync
+(
+   �
+fieldName
+:
+string
+,
+   �
+values
+:
+string
+[]
+|
+HierarchicalLevels
+,
+   �
+updateType
+:
+FilterUpdateType
+,
+   �
+options
+:
+FilterOptions
+,
+)
+:
+Promise
+<
+string
+>
+Applies the list of provided hierarchial filter values.
+Parameters
+fieldName
+:
+string
+The name of the field to filter on.
+values
+:
+string
+[]
+|
+HierarchicalLevels
+The list of values or levels to filter on.
+updateType
+:
+FilterUpdateType
+The update type of this filter (add, all, remove, replace).
+options
+:
+FilterOptions
+Returns
+Promise
+<
+string
+>
+The field name that the filter is applied on.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:442
+apply
+Range
+Filter
+Async
+applyRangeFilterAsync
+(
+   �
+fieldName
+:
+string
+,
+   �
+filterOptions
+:
+RangeFilterOptions
+,
+)
+:
+Promise
+<
+string
+>
+Applies a range filter to a quantitative or date field.
+Parameters
+fieldName
+:
+string
+The name of the field to filter on
+filterOptions
+:
+RangeFilterOptions
+Filter Options: min, max, nullOption. Atleast one of of min and max is required.
+For applying date filters, UTC Date objects are expected. (i.e., var min = new Date(Date.UTC(1999, 0, 1)))
+Returns
+Promise
+<
+string
+>
+The field name that the filter is applied on.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:395
+apply
+Relative
+Date
+Filter
+Async
+applyRelativeDateFilterAsync
+(
+   �
+fieldName
+:
+string
+,
+   �
+options
+:
+RelativeDateFilterOptions
+,
+)
+:
+Promise
+<
+string
+>
+Applies a relative date filter.
+Parameters
+fieldName
+:
+string
+The name of the field to filter on.
+options
+:
+RelativeDateFilterOptions
+The relative date filter options (anchorDate, periodType, rangeType, rangeN). When the rangeType is LASTN or NEXTN, the rangeN is required.
+Returns
+Promise
+<
+string
+>
+The field name that the filter is applied on.
+The following example shows how to apply a relative date filter from a worksheet.
+worksheet
+.
+applyRelativeDateFilterAsync
+(
+'Order Date'
+,
+{
+anchorDate:
+new
+Date
+(
+Date
+.
+UTC
+(
+2022
+,
+4
+,
+13
+)),
+periodType:
+PeriodType
+.
+Years
+,
+rangeType:
+DateRangeType
+.
+LastN
+,
+rangeN:
+1
+,
+}
+);
+Copy
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:429
+change
+Size
+Async
+changeSizeAsync
+(
+sheetSize
+:
+SheetSize
+)
+:
+Promise
+<
+SheetSize
+>
+Sets the size information of a sheet. Note that if the sheet is a Worksheet, only SheetSizeBehavior.Automatic
+is allowed since you can't actually set a Worksheet to a fixed size.
+Parameters
+sheetSize
+:
+SheetSize
+Returns
+Promise
+<
+SheetSize
+>
+Inherited from
+Sheet
+.
+changeSizeAsync
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:79
+clear
+Filter
+Async
+clearFilterAsync
+(
+fieldName
+:
+string
+)
+:
+Promise
+<
+string
+>
+Resets existing filters on the given field.
+Categorical filters are reset to "All," and range filters are reset to the full range.
+Relative date filters can not be reset, consider using the applyRelativeDateFilterAsync API.
+Parameters
+fieldName
+:
+string
+The name of the field to clear filter on.
+Returns
+Promise
+<
+string
+>
+The field to clear filter on.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:406
+clear
+Selected
+Marks
+Async
+clearSelectedMarksAsync
+()
+:
+Promise
+<
+void
+>
+Clears selected marks in the current worksheet.
+Returns
+Promise
+<
+void
+>
+Empty promise that resolves when the selection has been cleared.
+The following example assumes that you have some marks already selected in the worksheet. After it has run,
+you should have no marks selected, and you should see the console message.
+Use
+await
+only inside an Async function
+let
+vizActiveSheet
+=
+viz
+.
+workbook
+.
+activeSheet
+;
+if
+(
+vizActiveSheet
+.
+sheetType
+===
+"worksheet"
+) {
+// clear selected marks
+await
+vizActiveSheet
+.
+clearSelectedMarksAsync
+();
+console
+.
+log
+(
+'Your marks selection has been cleared!'
+);
+}
+Copy
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:467
+execute
+Context
+Menu
+Async
+executeContextMenuAsync
+(
+targetMenu
+:
+Ubertip
+,
+menuItemId
+:
+string
+)
+:
+Promise
+<
+void
+>
+Executes the external context menu item inserted by the appendContextMenuAsync method.
+The parameter menuItemId specifies the menu item to execute and is the return
+value from the appendContextMenuAsync method.
+Once this function is called, menu item identified by menuItemId will be executed.
+Parameters
+targetMenu
+:
+Ubertip
+Defines where to execute new external menu item.
+menuItemId
+:
+string
+Unique identifier of external context menu item that user wants to execute.
+Returns
+Promise
+<
+void
+>
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:613
+get
+Annotations
+Async
+getAnnotationsAsync
+()
+:
+Promise
+<
+Annotation
+[]
+>
+Retrieves a list of the annotations in the worksheet.
+Returns
+Promise
+<
+Annotation
+[]
+>
+A list annotations in the worksheet.
+The following example shows how you might call this method.
+let
+annotations
+=
+await
+worksheet
+.
+getAnnotationsAsync
+();
+console
+.
+log
+(
+annotations
+);
+Copy
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:550
+get
+Data
+Sources
+Async
+getDataSourcesAsync
+()
+:
+Promise
+<
+DataSource
+[]
+>
+Gets the data sources for this worksheet. Note that calling this method might negatively impact performance
+and responsiveness of the viz that you are embedding. The method is partly
+asynchronous but includes some serial operations.
+Returns
+Promise
+<
+DataSource
+[]
+>
+The primary data source and all of the secondary data sources for this worksheet.
+By convention the first data source in the array is the primary.
+The following example shows how you might find a specific data source of a worksheet,
+using the
+getDataSourcesAsync()
+method. You could then call the
+getLogicalTablesAsync()
+method
+to get the logical tables in the data source, and then use the either the
+DataSource
+or the
+Worksheet
+to get the underlying table data.
+Use
+await
+only inside an Async function
+let
+vizActiveSheet
+=
+viz
+.
+workbook
+.
+activeSheet
+;
+if
+(
+vizActiveSheet
+.
+sheetType
+===
+"worksheet"
+) {
+let
+dataSources
+=
+await
+vizActiveSheet
+.
+getDataSourcesAsync
+();
+console
+.
+log
+(
+dataSources
+[
+0
+].
+name
+);
+let
+dataSource
+=
+dataSources
+.
+find
+(
+datasource
+=>
+datasource
+.
+name
+===
+"Sample - Superstore"
+);
+// process the dataSource
+}
+Copy
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:172
+get
+Filters
+Async
+getFiltersAsync
+()
+:
+Promise
+<
+Filter
+[]
+>
+Gets the list of filters on a worksheet. Hierarchical filters are not yet supported
+Returns
+Promise
+<
+Filter
+[]
+>
+A promise that resolves to the collection of filters used in this worksheet.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:373
+get
+Selected
+Marks
+Async
+getSelectedMarksAsync
+()
+:
+Promise
+<
+MarksCollection
+>
+Gets the data for the marks which are currently selected on the worksheet.
+If there are no marks currently selected, an empty model is returned.
+Returns
+Promise
+<
+MarksCollection
+>
+The marks that are selected.
+Use
+await
+only inside an Async function
+let
+vizActiveSheet
+=
+viz
+.
+workbook
+.
+activeSheet
+;
+if
+(
+vizActiveSheet
+.
+sheetType
+===
+"worksheet"
+) {
+// Call to get the selected marks for the worksheet
+let
+selectedMarks
+=
+await
+vizActiveSheet
+.
+getSelectedMarksAsync
+();
+// Get the first DataTable for our selected marks (usually there is just one)
+const
+dataTableName
+=
+selectedMarks
+.
+data
+[
+0
+];
+// Map the data into a format for display, etc.
+}
+Copy
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:490
+get
+Summary
+Columns
+Info
+Async
+getSummaryColumnsInfoAsync
+()
+:
+Promise
+<
+Column
+[]
+>
+Gets the columns that are returned with
+getSummaryDataAsync
+or
+getSummaryDataReaderAsync
+.
+The columns are sorted in the order that they appear in the view or in the View Data window.
+Note that
+getSummaryDataReaderAsync
+returns the summary data sorted with the columns
+in alphabetical (ascending) order. You can use  method to determine the view order..
+Returns
+Promise
+<
+Column
+[]
+>
+The array of columns that describe the data in the worksheet.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:246
+get
+Summary
+Data
+Async
+getSummaryDataAsync
+(
+options
+?:
+GetSummaryDataOptions
+)
+:
+Promise
+<
+DataTable
+>
+Gets the summary data table for a worksheet.
+Warning: getSummaryDataAsync can fail with a worksheet with many rows of data and is now deprecated.
+Parameters
+Optional
+options
+:
+GetSummaryDataOptions
+Collection of options to change the behavior of the call.
+Returns
+Promise
+<
+DataTable
+>
+A data table containing the summary data for the worksheet.
+Deprecated
+Use getSummaryDataReaderAsync to avoid failures with many rows of data.
+Example shows how to replace unsafe usage of
+getSummaryDataAsync
+with
+getSummaryDataReaderAsync
+and
+getAllPagesAsync
+assuming less than 4,000,000
+rows of data.
+let
+vizActiveSheet
+=
+viz
+.
+workbook
+.
+activeSheet
+;
+if
+(
+vizActiveSheet
+.
+sheetType
+===
+"worksheet"
+) {
+const
+dataTableReader
+=
+await
+vizActiveSheet
+.
+getSummaryDataReaderAsync
+();
+const
+dataTable
+=
+await
+dataTableReader
+.
+getAllPagesAsync
+();
+await
+dataTableReader
+.
+releaseAsync
+();
+// ... process data table ...
+}
+Copy
+Example shows how to replace unsafe usage of
+getSummaryDataAsync
+with
+getSummaryDataReaderAsync
+and
+getPageAsync
+and work with individual
+pages.
+let
+vizActiveSheet
+=
+viz
+.
+workbook
+.
+activeSheet
+;
+if
+(
+vizActiveSheet
+.
+sheetType
+===
+"worksheet"
+) {
+const
+dataTableReader
+=
+await
+vizActiveSheet
+.
+getSummaryDataReaderAsync
+();
+for
+(
+let
+currentPage
+=
+0
+;
+currentPage
+<
+dataTableReader
+.
+pageCount
+;
+currentPage
+++) {
+const
+dataTablePage
+=
+await
+dataTableReader
+.
+getPageAsync
+(
+currentPage
+);
+// ... process current page ....
+}
+await
+dataTableReader
+.
+releaseAsync
+();
+}
+Copy
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:212
+get
+Summary
+Data
+Reader
+Async
+getSummaryDataReaderAsync
+(
+   �
+pageRowCount
+?:
+number
+,
+   �
+options
+?:
+GetSummaryDataOptions
+,
+)
+:
+Promise
+<
+DataTableReader
+>
+Gets a summary data table reader for this worksheet.
+Only one active DataTableReader for summary data is supported.
+Parameters
+Optional
+pageRowCount
+:
+number
+The number of rows per page. The default and maximum is 10,000 rows.
+Optional
+options
+:
+GetSummaryDataOptions
+Collection of options to change the behavior of the reader.
+Returns
+Promise
+<
+DataTableReader
+>
+A data table reader to access the summary data for the worksheet.
+Example showing the methods to get and use the summary data reader for all rows in a worksheet.
+Use
+await
+only inside an Async function
+let
+vizActiveSheet
+=
+viz
+.
+workbook
+.
+activeSheet
+;
+if
+(
+vizActiveSheet
+.
+sheetType
+===
+"worksheet"
+) {
+const
+dataTableReader
+=
+await
+vizActiveSheet
+.
+getSummaryDataReaderAsync
+();
+for
+(
+let
+currentPage
+=
+0
+;
+currentPage
+<
+dataTableReader
+.
+pageCount
+;
+currentPage
+++) {
+const
+dataTablePage
+=
+await
+dataTableReader
+.
+getPageAsync
+(
+currentPage
+);
+// ... process current page ....
+}
+await
+dataTableReader
+.
+releaseAsync
+();
+}
+Copy
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:236
+get
+Underlying
+Data
+Async
+getUnderlyingDataAsync
+(
+options
+?:
+GetUnderlyingDataOptions
+)
+:
+Promise
+<
+DataTable
+>
+Gets the underlying data table for this worksheet.
+Parameters
+Optional
+options
+:
+GetUnderlyingDataOptions
+Collection of options to change the behavior of the call.
+Returns
+Promise
+<
+DataTable
+>
+A data table containing the underlying data for the worksheet.
+You can use the
+GetUnderlyingDataOptions.maxRows
+property to request the number of rows of data to return.
+If unspecified (maxRows == '0'), the call to
+getUnderlyingDataAsync
+requests all rows in the data source.
+Note that the maximum number of rows returned from the
+getUnderlyingDataAsync()
+method is limited
+to 10,000 rows. You can use the
+DataTable
+property,
+isTotalRowCountLimited
+, to test whether there is
+more data. A value of true indicates that the calling function requested more rows than the limit (10,000) and the
+underlying data source contains more rows than can be returned.
+In the following example, the
+getUnderlyingDataAsync()
+method is used to get the underlying data for
+a specific column in a workbook.
+Use
+await
+only inside an Async function
+let
+vizActiveSheet
+=
+viz
+.
+workbook
+.
+activeSheet
+;
+if
+(
+vizActiveSheet
+.
+sheetType
+===
+"worksheet"
+) {
+let
+dataTable
+=
+await
+vizActiveSheet
+.
+getUnderlyingDataAsync
+();
+let
+field
+=
+dataTable
+.
+columns
+.
+find
+(
+column
+=>
+column
+.
+fieldName
+===
+"Sales"
+);
+let
+list
+= [];
+for
+(
+let
+row
+of
+dataTable
+.
+data
+) {
+list
+.
+push
+(
+row
+[
+field
+.
+index
+].
+value
+);
+}
+let
+values
+=
+list
+.
+filter
+((
+el
+,
+i
+,
+arr
+)
+=>
+arr
+.
+indexOf
+(
+el
+) ===
+i
+);
+console
+.
+log
+(
+values
+);
+}
+Copy
+Deprecated
+Use Worksheet.getUnderlyingTableDataReaderAsync or Worksheet.getUnderlyingTableDataAsync.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:282
+get
+Underlying
+Table
+Data
+Async
+getUnderlyingTableDataAsync
+(
+   �
+logicalTableId
+:
+string
+,
+   �
+options
+?:
+GetUnderlyingDataOptions
+,
+)
+:
+Promise
+<
+DataTable
+>
+Gets the underlying data table for the given logical table id.
+Use the
+getUnderlyingTablesAsync
+method to identify the logical tables.
+Parameters
+logicalTableId
+:
+string
+logical table id.
+Optional
+options
+:
+GetUnderlyingDataOptions
+Collection of options to change the behavior of the call.
+Returns
+Promise
+<
+DataTable
+>
+A data table containing the underlying data for the given logical table id
+You can use the
+getUnderlyingDataOptions.maxRows
+property to request the number of rows of data to return.
+If unspecified (maxRows == '0'), the call to
+getUnderlyingTableDataAsync
+requests all rows in the logical table.
+Note that the maximum number of rows returned from the
+getUnderlyingTableDataAsync()
+method is limited
+to 10,000 rows. You can use the
+DataTable
+property,
+isTotalRowCountLimited
+, to test whether there is
+more data. A value of true indicates that the calling function requested more rows than the limit (10,000) and the
+underlying data source contains more rows than can be returned.
+See
+getUnderlyingTableDataReaderAsync to read more than 10,000 rows.
+var
+worksheet
+=
+tableau
+.
+extensions
+.
+dashboardContent
+.
+dashboard
+.
+worksheets
+.
+find
+(
+w
+=>
+w
+.
+name
+===
+"Sale Map"
+);
+const
+logicalTables
+=
+await
+worksheet
+.
+getUnderlyingTablesAsync
+();
+const
+dataTable
+=
+await
+worksheet
+.
+getUnderlyingTableDataAsync
+(
+logicalTables
+[
+0
+].
+id
+)
+// process the dataTable...
+Copy
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:329
+get
+Underlying
+Table
+Data
+Reader
+Async
+getUnderlyingTableDataReaderAsync
+(
+   �
+logicalTableId
+:
+string
+,
+   �
+pageRowCount
+?:
+number
+,
+   �
+options
+?:
+GetUnderlyingDataOptions
+,
+)
+:
+Promise
+<
+DataTableReader
+>
+Gets a underlying data table reader for the given logical table id.
+Use the
+getUnderlyingTablesAsync
+method to identify the logical tables.
+Only one active DataTableReader per logical table id is supported.
+getUnderlyingTableDataReaderAsync
+attempts to prepare all the rows of the underlying table to be read as pages.
+However, there is a limit to the number of rows that can be prepared. The default limit is 1 million rows of data.
+You can change the default limit with the Tableau Server (Cloud) or Tableau Desktop option: ExtensionsAndEmbeddingReaderRowLimit.
+If the underlying table has many columns,
+getUnderlyingTableDataReaderAsync
+can be sped up by only requesting
+native data values in the GetUnderlyingDataOptions.
+Parameters
+logicalTableId
+:
+string
+logical table id.
+Optional
+pageRowCount
+:
+number
+The number of rows per page. The default and maximum is 10,000 rows.
+Optional
+options
+:
+GetUnderlyingDataOptions
+Collection of options to change the behavior of the reader.
+Returns
+Promise
+<
+DataTableReader
+>
+A data table reader to access the underlying data for the given logical table id.
+The following example shows getting the first page of underlying data.
+Use
+await
+only inside an Async function
+let
+vizActiveSheet
+=
+viz
+.
+workbook
+.
+activeSheet
+;
+if
+(
+vizActiveSheet
+.
+sheetType
+===
+"worksheet"
+) {
+// Call to get the underlying logical tables used by the worksheet
+const
+underlyingTablesData
+=
+await
+vizActiveSheet
+.
+getUnderlyingTablesAsync
+();
+const
+logicalTableId
+=
+underlyingTablesData
+[
+0
+].
+id
+;
+// Use the above logicalTableId to get the underlying data reader on the active sheet
+const
+dataTableReader
+=
+await
+vizActiveSheet
+.
+getUnderlyingTableDataReaderAsync
+(
+logicalTableId
+);
+const
+page
+=
+await
+dataTableReader
+.
+getPageAsync
+(
+0
+);
+// ... process first page ....
+await
+dataTableReader
+.
+releaseAsync
+();
+}
+Copy
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:363
+get
+Underlying
+Tables
+Async
+getUnderlyingTablesAsync
+()
+:
+Promise
+<
+LogicalTable
+[]
+>
+Gets the underlying logical tables used by the worksheet. The resulting logical tables are determined by the measures in the worksheet.
+If a worksheet's data source contains multiple logical tables and the worksheet contains only measures from one logical table, this API
+will return one logical table.
+Returns
+Promise
+<
+LogicalTable
+[]
+>
+An array of logical tables corresponding to the measures referenced by the worksheet.
+Use
+await
+only inside an Async function
+let
+vizActiveSheet
+=
+viz
+.
+workbook
+.
+activeSheet
+;
+if
+(
+vizActiveSheet
+.
+sheetType
+===
+"worksheet"
+) {
+// Call to get the underlying logical tables used by the worksheet
+let
+underlyingTablesData
+=
+await
+vizActiveSheet
+.
+getUnderlyingTablesAsync
+();
+let
+logicalTableId
+=
+underlyingTablesData
+[
+0
+].
+id
+;
+// Use the above logicalTableId to get the underlying data on the active sheet
+// by calling worksheet.getUnderlyingTableDataAsync(logicalTableId)
+let
+underlyingTableDataForId
+=
+await
+vizActiveSheet
+.
+getUnderlyingTableDataAsync
+(
+logicalTableId
+);
+}
+Copy
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:304
+get
+Visual
+Specification
+Async
+getVisualSpecificationAsync
+()
+:
+Promise
+<
+VisualSpecification
+>
+Returns the visual specification for the worksheet, which can be used to get
+the mappings from fields to encodings backing the visual within the worksheet
+Returns
+Promise
+<
+VisualSpecification
+>
+Promise containing the VisualSpecification
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:635
+remove
+Annotation
+Async
+removeAnnotationAsync
+(
+annotation
+:
+Annotation
+)
+:
+Promise
+<
+void
+>
+Removes the corresponding annotation from the worksheet it belongs to.
+This is intended to be passed an Annotation object received from getAnnotationsAsync.
+Parameters
+annotation
+:
+Annotation
+The annotation to remove.
+Returns
+Promise
+<
+void
+>
+Empty promise that resolves when the annotation is removed.
+The following example shows how you might call this method using an annotation object.
+for
+(
+const
+annotation
+of
+annotations
+) {
+await
+worksheet
+.
+removeAnnotationAsync
+(
+annotation
+);
+}
+Copy
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:568
+remove
+Context
+Menu
+Async
+removeContextMenuAsync
+(
+targetMenu
+:
+Ubertip
+,
+menuItemId
+:
+string
+)
+:
+Promise
+<
+void
+>
+Removes the external context menu item inserted by the appendContextMenuAsync method.
+The parameter menuItemId specifies the menu item to remove and is the return
+value from the appendContextMenuAsync method.
+Once this function is called, menu item identified by menuItemId won't be rendered to the user
+in corresponding context menu.
+Parameters
+targetMenu
+:
+Ubertip
+Defines where to remove new external menu item.
+menuItemId
+:
+string
+Unique identifier of external context menu item that user wants to remove.
+Returns
+Promise
+<
+void
+>
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:600
+rename
+Context
+Menu
+Async
+renameContextMenuAsync
+(
+   �
+targetMenu
+:
+Ubertip
+,
+   �
+menuHeader
+:
+string
+,
+   �
+menuDescription
+:
+string
+,
+)
+:
+Promise
+<
+void
+>
+Sets the displayed header for the external context menu.
+The parameter menuHeader specifies the header to be displayed.
+Once this function is called, menuHeader will be rendered to the user as the header
+for corresponding context menu. If not called, a default header will be displayed.
+Parameters
+targetMenu
+:
+Ubertip
+Specifies the location of the external context menu.
+menuHeader
+:
+string
+Defines a header string to be displayed for the menu.
+menuDescription
+:
+string
+Defines a description of the menu to be displayed in a tooltip
+Returns
+Promise
+<
+void
+>
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:627
+select
+Marks
+By
+Value
+Async
+selectMarksByValueAsync
+(
+   �
+selections
+:
+SelectionCriteria
+[]
+,
+   �
+updateType
+:
+SelectionUpdateType
+,
+)
+:
+Promise
+<
+void
+>
+Selects the marks by value, using the SelectionCriteria interface.
+This is intended for manual construction of the desired selections.
+Parameters
+selections
+:
+SelectionCriteria
+[]
+A list of criteria for which marks to select.
+updateType
+:
+SelectionUpdateType
+The type of selection to make: add, remove, or replace.
+Returns
+Promise
+<
+void
+>
+Empty promise that resolves when the selection is complete.
+The following example shows how you might call this method using state names as the
+SelectionCriteria
+.
+The
+SelectionUpdateType
+is replace (
+SelectionUpdateType.Replace
+), so these values replace
+the marks that are currently selected.
+worksheet
+.
+selectMarksByValueAsync
+([{
+fieldName:
+'State'
+,
+value:
+[
+'Texas'
+,
+'Washington'
+,
+'California'
+]
+}],
+SelectionUpdateType
+.
+Replace
+);
+Copy
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:514
+Properties
+Readonly
+index
+index
+:
+number
+Returns
+The index of the sheet within the published tabs. Note that hidden tabs are still
+counted in the ordering, as long as they are published.
+Inherited from
+Sheet
+.
+index
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:58
+Readonly
+is
+Active
+isActive
+:
+boolean
+Returns
+A value indicating whether the sheet is the currently active sheet.
+Inherited from
+Sheet
+.
+isActive
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:45
+Readonly
+is
+Hidden
+isHidden
+:
+boolean
+Returns
+A value indicating whether the sheet is hidden (true) or visible (false) in the UI.
+Note that if the entire tab control is hidden, it does not affect the state of this flag.
+This sheet may still report that it is visible even when the tabs control is hidden.
+Inherited from
+Sheet
+.
+isHidden
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:52
+Readonly
+name
+name
+:
+string
+Returns
+The name of the sheet.
+Inherited from
+Sheet
+.
+name
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:35
+Readonly
+parent
+Dashboard
+parentDashboard
+:
+null
+|
+Dashboard
+Returns
+The dashboard object to which this worksheet belong. If the worksheet is not on a dashboard, it returns null.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:140
+Readonly
+parent
+Story
+Point
+parentStoryPoint
+:
+null
+|
+StoryPoint
+Returns
+The
+StoryPoint
+object to which this worksheet belongs. If the worksheet is not in a story, it returns null.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:145
+Readonly
+sheet
+Type
+sheetType
+:
+SheetType
+Returns
+The type of the sheet.
+Inherited from
+Sheet
+.
+sheetType
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:40
+Readonly
+size
+size
+:
+SheetSize
+Returns
+The size information that the author specified when publishing the workbook.
+Inherited from
+Sheet
+.
+size
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:68
+Readonly
+url
+url
+:
+string
+Returns
+the URL for this sheet.
+Inherited from
+Sheet
+.
+url
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:63
+Readonly
+workbook
+workbook
+:
+Workbook
+Returns
+The workbook containing this sheet
+Inherited from
+Sheet
+.
+workbook
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:73
+Settings
+Member Visibility
+Protected
+Inherited
+External
+Theme
+OS
+Light
+Dark
+On This Page
+Methods
+annotate
+Mark
+Async
+append
+Context
+Menu
+Async
+apply
+Filter
+Async
+apply
+Hierarchical
+Filter
+Async
+apply
+Range
+Filter
+Async
+apply
+Relative
+Date
+Filter
+Async
+change
+Size
+Async
+clear
+Filter
+Async
+clear
+Selected
+Marks
+Async
+execute
+Context
+Menu
+Async
+get
+Annotations
+Async
+get
+Data
+Sources
+Async
+get
+Filters
+Async
+get
+Selected
+Marks
+Async
+get
+Summary
+Columns
+Info
+Async
+get
+Summary
+Data
+Async
+get
+Summary
+Data
+Reader
+Async
+get
+Underlying
+Data
+Async
+get
+Underlying
+Table
+Data
+Async
+get
+Underlying
+Table
+Data
+Reader
+Async
+get
+Underlying
+Tables
+Async
+get
+Visual
+Specification
+Async
+remove
+Annotation
+Async
+remove
+Context
+Menu
+Async
+rename
+Context
+Menu
+Async
+select
+Marks
+By
+Value
+Async
+Properties
+index
+is
+Active
+is
+Hidden
+name
+parent
+Dashboard
+parent
+Story
+Point
+sheet
+Type
+size
+url
+workbook
+Tableau Embedding API
+Loading...
+&copy; Copyright   Salesforce, Inc.  All rights reserved. Various trademarks held by their respective owners. Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States

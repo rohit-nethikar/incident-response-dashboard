@@ -1,0 +1,483 @@
+Dashboard | Tableau Embedding API
+Tableau Embedding API
+Preparing search index...
+Dashboard
+Interface Dashboard
+interface
+Dashboard
+{
+   �
+index
+:
+number
+;
+   �
+isActive
+:
+boolean
+;
+   �
+isHidden
+:
+boolean
+;
+   �
+name
+:
+string
+;
+   �
+objects
+:
+DashboardObject
+[]
+;
+   �
+parentStoryPoint
+:
+null
+|
+StoryPoint
+;
+   �
+sheetType
+:
+SheetType
+;
+   �
+size
+:
+SheetSize
+;
+   �
+url
+:
+string
+;
+   �
+workbook
+:
+Workbook
+;
+   �
+worksheets
+:
+Worksheet
+[]
+;
+   �
+applyFilterAsync
+(
+       �
+fieldName
+:
+string
+,
+       �
+values
+:
+string
+[]
+,
+       �
+updateType
+:
+FilterUpdateType
+,
+       �
+filterOptions
+:
+FilterOptions
+,
+   �
+)
+:
+Promise
+<
+string
+>
+;
+   �
+changeSizeAsync
+(
+sheetSize
+:
+SheetSize
+)
+:
+Promise
+<
+SheetSize
+>
+;
+   �
+getFiltersAsync
+()
+:
+Promise
+<
+Filter
+[]
+>
+;
+}
+Hierarchy (
+View Summary
+)
+Sheet
+Dashboard
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:638
+Index
+Methods
+apply
+Filter
+Async
+change
+Size
+Async
+get
+Filters
+Async
+Properties
+index
+is
+Active
+is
+Hidden
+name
+objects
+parent
+Story
+Point
+sheet
+Type
+size
+url
+workbook
+worksheets
+Methods
+apply
+Filter
+Async
+applyFilterAsync
+(
+   �
+fieldName
+:
+string
+,
+   �
+values
+:
+string
+[]
+,
+   �
+updateType
+:
+FilterUpdateType
+,
+   �
+filterOptions
+:
+FilterOptions
+,
+)
+:
+Promise
+<
+string
+>
+Applies a simple categorical filter (non-date) to the dashboard.
+This method is similar to the method used for worksheets, but applies the filter to all the worksheets in the dashboard that have that same field.
+Note that the filter is ignored by a worksheet if the worksheet doesn't have the relevant field in its data source.
+Parameters
+fieldName
+:
+string
+The name of the field to filter on.
+values
+:
+string
+[]
+The list of values to filter on.
+updateType
+:
+FilterUpdateType
+The update type of this filter (add, all, remove, replace).
+filterOptions
+:
+FilterOptions
+Advanced filter options (isExcludeMode).
+Returns
+Promise
+<
+string
+>
+The field name that the filter is applied on.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:694
+change
+Size
+Async
+changeSizeAsync
+(
+sheetSize
+:
+SheetSize
+)
+:
+Promise
+<
+SheetSize
+>
+Sets the size information of a sheet. Note that if the sheet is a Worksheet, only SheetSizeBehavior.Automatic
+is allowed since you can't actually set a Worksheet to a fixed size.
+Parameters
+sheetSize
+:
+SheetSize
+Returns
+Promise
+<
+SheetSize
+>
+Inherited from
+Sheet
+.
+changeSizeAsync
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:79
+get
+Filters
+Async
+getFiltersAsync
+()
+:
+Promise
+<
+Filter
+[]
+>
+Returns
+Promise
+<
+Filter
+[]
+>
+The collection of filters used on the dashboard
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:680
+Properties
+Readonly
+index
+index
+:
+number
+Returns
+The index of the sheet within the published tabs. Note that hidden tabs are still
+counted in the ordering, as long as they are published.
+Inherited from
+Sheet
+.
+index
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:58
+Readonly
+is
+Active
+isActive
+:
+boolean
+Returns
+A value indicating whether the sheet is the currently active sheet.
+Inherited from
+Sheet
+.
+isActive
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:45
+Readonly
+is
+Hidden
+isHidden
+:
+boolean
+Returns
+A value indicating whether the sheet is hidden (true) or visible (false) in the UI.
+Note that if the entire tab control is hidden, it does not affect the state of this flag.
+This sheet may still report that it is visible even when the tabs control is hidden.
+Inherited from
+Sheet
+.
+isHidden
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:52
+Readonly
+name
+name
+:
+string
+Returns
+The name of the sheet.
+Inherited from
+Sheet
+.
+name
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:35
+Readonly
+objects
+objects
+:
+DashboardObject
+[]
+Returns
+The collection of objects contained in the dashboard.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:643
+Readonly
+parent
+Story
+Point
+parentStoryPoint
+:
+null
+|
+StoryPoint
+Returns
+Returns the
+StoryPoint
+object to which this Dashboard belongs. If the Dashboard doesn't belong to a story, it returns null.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:675
+Readonly
+sheet
+Type
+sheetType
+:
+SheetType
+Returns
+The type of the sheet.
+Inherited from
+Sheet
+.
+sheetType
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:40
+Readonly
+size
+size
+:
+SheetSize
+Returns
+The size information that the author specified when publishing the workbook.
+Inherited from
+Sheet
+.
+size
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:68
+Readonly
+url
+url
+:
+string
+Returns
+the URL for this sheet.
+Inherited from
+Sheet
+.
+url
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:63
+Readonly
+workbook
+workbook
+:
+Workbook
+Returns
+The workbook containing this sheet
+Inherited from
+Sheet
+.
+workbook
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:73
+Readonly
+worksheets
+worksheets
+:
+Worksheet
+[]
+This is a helper method and is equivalent to looping
+through all of the objects in a dashboard and collecting all of the objects
+whose type is
+worksheet
+. You can use this property to iterate
+through all of the worksheets in the dashboard.
+Returns
+The collection of worksheets contained in the dashboard.
+The following example uses the JavaScript
+forEach()
+method to traverse
+the worksheets in the dashboard.
+let
+vizActiveSheet
+=
+viz
+.
+workbook
+.
+activeSheet
+;
+if
+(
+vizActiveSheet
+.
+sheetType
+===
+"dashboard"
+) {
+vizActiveSheet
+.
+worksheets
+.
+forEach
+(
+function
+(
+worksheet
+) {
+// do something with the worksheets..
+})
+}
+Copy
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:670
+Settings
+Member Visibility
+Protected
+Inherited
+External
+Theme
+OS
+Light
+Dark
+On This Page
+Methods
+apply
+Filter
+Async
+change
+Size
+Async
+get
+Filters
+Async
+Properties
+index
+is
+Active
+is
+Hidden
+name
+objects
+parent
+Story
+Point
+sheet
+Type
+size
+url
+workbook
+worksheets
+Tableau Embedding API
+Loading...
+&copy; Copyright   Salesforce, Inc.  All rights reserved. Various trademarks held by their respective owners. Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States

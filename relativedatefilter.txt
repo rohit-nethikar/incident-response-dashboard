@@ -1,0 +1,335 @@
+RelativeDateFilter | Tableau Embedding API
+Tableau Embedding API
+Preparing search index...
+RelativeDateFilter
+Interface RelativeDateFilter
+An abstract base class for all of the filter types.
+interface
+RelativeDateFilter
+{
+   �
+anchorDate
+:
+DataValue
+;
+   �
+fieldId
+:
+string
+;
+   �
+fieldName
+:
+string
+;
+   �
+filterType
+:
+FilterType
+;
+   �
+periodType
+:
+PeriodType
+;
+   �
+rangeN
+:
+number
+;
+   �
+rangeType
+:
+DateRangeType
+;
+   �
+worksheetName
+:
+string
+;
+   �
+getAppliedWorksheetsAsync
+()
+:
+Promise
+<
+string
+[]
+>
+;
+   �
+getFieldAsync
+()
+:
+Promise
+<
+Field
+>
+;
+   �
+setAppliedWorksheetsAsync
+(
+applyToWorksheets
+:
+string
+[]
+)
+:
+Promise
+<
+string
+[]
+>
+;
+}
+Hierarchy (
+View Summary
+)
+Filter
+RelativeDateFilter
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:160
+Index
+Methods
+get
+Applied
+Worksheets
+Async
+get
+Field
+Async
+set
+Applied
+Worksheets
+Async
+Properties
+anchor
+Date
+field
+Id
+field
+Name
+filter
+Type
+period
+Type
+range
+N
+range
+Type
+worksheet
+Name
+Methods
+get
+Applied
+Worksheets
+Async
+getAppliedWorksheetsAsync
+()
+:
+Promise
+<
+string
+[]
+>
+Returns
+Promise
+<
+string
+[]
+>
+the list of worksheet names that have the filter applied.
+Inherited from
+Filter
+.
+getAppliedWorksheetsAsync
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:49
+get
+Field
+Async
+getFieldAsync
+()
+:
+Promise
+<
+Field
+>
+Returns
+Promise
+<
+Field
+>
+a promise containing the field for the filter.
+Inherited from
+Filter
+.
+getFieldAsync
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:43
+set
+Applied
+Worksheets
+Async
+setAppliedWorksheetsAsync
+(
+applyToWorksheets
+:
+string
+[]
+)
+:
+Promise
+<
+string
+[]
+>
+Applies the filter to the specified list of worksheets.
+If the worksheet(s) do not exist or do not contain the field in their data sources, an exception is thrown.
+Parameters
+applyToWorksheets
+:
+string
+[]
+list of worksheets to apply the filter on
+Returns
+Promise
+<
+string
+[]
+>
+the list of worksheet names that have the filter applied
+Inherited from
+Filter
+.
+setAppliedWorksheetsAsync
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:59
+Properties
+Readonly
+anchor
+Date
+anchorDate
+:
+DataValue
+Returns
+the anchor date of the filter
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:164
+Readonly
+field
+Id
+fieldId
+:
+string
+Returns
+The id of the field being filtered.
+Inherited from
+Filter
+.
+fieldId
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:37
+Readonly
+field
+Name
+fieldName
+:
+string
+Returns
+The name of the field being filtered.  Note that this is the caption
+as shown in the UI, and not the actual database field name.
+Inherited from
+Filter
+.
+fieldName
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:31
+Readonly
+filter
+Type
+filterType
+:
+FilterType
+Returns
+The type of the filter.
+Inherited from
+Filter
+.
+filterType
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:25
+Readonly
+period
+Type
+periodType
+:
+PeriodType
+Returns
+The date period of the filter.
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:169
+Readonly
+range
+N
+rangeN
+:
+number
+Returns
+When getRange returns LASTN or NEXTN, this is the N value (how many years, months, etc.).
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:179
+Readonly
+range
+Type
+rangeType
+:
+DateRangeType
+Returns
+The range of the date filter (years, months, etc.).
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:174
+Readonly
+worksheet
+Name
+worksheetName
+:
+string
+Returns
+The parent worksheet.
+Inherited from
+Filter
+.
+worksheetName
+Defined in packages/api-external-contract-js/src/ExternalContract/Shared/FilterInterfaces.ts:20
+Settings
+Member Visibility
+Protected
+Inherited
+External
+Theme
+OS
+Light
+Dark
+On This Page
+Methods
+get
+Applied
+Worksheets
+Async
+get
+Field
+Async
+set
+Applied
+Worksheets
+Async
+Properties
+anchor
+Date
+field
+Id
+field
+Name
+filter
+Type
+period
+Type
+range
+N
+range
+Type
+worksheet
+Name
+Tableau Embedding API
+Loading...
+&copy; Copyright   Salesforce, Inc.  All rights reserved. Various trademarks held by their respective owners. Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States

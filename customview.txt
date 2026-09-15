@@ -1,0 +1,148 @@
+CustomView | Tableau Embedding API
+Tableau Embedding API
+Preparing search index...
+CustomView
+Interface CustomView
+A named snapshot of the workbook at a specific moment.
+interface
+CustomView
+{
+   �
+default
+:
+boolean
+;
+   �
+name
+:
+string
+;
+   �
+ownerName
+:
+string
+;
+   �
+shared
+:
+boolean
+;
+   �
+url
+:
+string
+;
+   �
+workbook
+:
+Workbook
+;
+   �
+saveAsync
+()
+:
+Promise
+<
+CustomView
+>
+;
+}
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:103
+Index
+Methods
+save
+Async
+Properties
+default
+name
+owner
+Name
+shared
+url
+workbook
+Methods
+save
+Async
+saveAsync
+()
+:
+Promise
+<
+CustomView
+>
+Updates an existing custom view
+Returns
+Promise
+<
+CustomView
+>
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:137
+Properties
+default
+default
+:
+boolean
+Gets or sets whether this is the default custom view.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:117
+name
+name
+:
+string
+Gets or sets the user-friendly name for the custom view
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:107
+Readonly
+owner
+Name
+ownerName
+:
+string
+Gets the user that created the custom view.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:122
+shared
+shared
+:
+boolean
+Gets or sets whether the custom view is public or private.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:112
+Readonly
+url
+url
+:
+string
+Unique URL to load this view again.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:127
+Readonly
+workbook
+workbook
+:
+Workbook
+Gets the
+Workbook
+to which this
+CustomView
+belongs.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/WorkbookInterface.ts:132
+Settings
+Member Visibility
+Protected
+Inherited
+External
+Theme
+OS
+Light
+Dark
+On This Page
+Methods
+save
+Async
+Properties
+default
+name
+owner
+Name
+shared
+url
+workbook
+Tableau Embedding API
+Loading...
+&copy; Copyright   Salesforce, Inc.  All rights reserved. Various trademarks held by their respective owners. Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States

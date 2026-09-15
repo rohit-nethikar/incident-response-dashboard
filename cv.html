@@ -1,0 +1,294 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta property="og:type" content="website"><meta property="og:title" content="Embed Code for Custom Views"><meta property="og:description" content="The embed code for  Tableau Server 2022"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@tableau"><meta name="twitter:title" content="Embed Code for Custom Views"><meta name="twitter:description" content="The embed code for  Tableau Server 2022"><meta name="section" content="Support"><meta name="subsection" content="Product Help"><meta name="breadcrumb_l1_text" content="Support"><meta name="breadcrumb_l1_url" content="http://www.tableau.com/en-us/support"><meta name="breadcrumb_l2_text" content="Product Help"><meta name="breadcrumb_l2_url" content="http://www.tableau.com/en-us/support/help"><meta name="product_applies_to" content="AppliesTo.Tableau Cloud,AppliesTo.Tableau Server" /><title>Embed Code for Custom Views - Tableau</title><script type="text/javascript">(function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? String.fromCharCode(38) + 'l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-BVCN');</script><script type="text/javascript" src="https://cdn.cookielaw.org/consent/2d08f29e-0ede-4e8c-997c-f7ef5be8d4e7/OtAutoBlock.js"></script><script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="2d08f29e-0ede-4e8c-997c-f7ef5be8d4e7"></script><script type="text/javascript">function OptanonWrapper() {
+        window.addEventListener('load', () => {
+          let optanonCookie = decodeURIComponent(document.cookie);
+          let activeGroups = OnetrustActiveGroups;
+          if (optanonCookie.includes('OptanonConsent') && activeGroups) {
+            if (activeGroups.includes('3')) {
+              let event = new CustomEvent('UpdateCookieConsent', {
+                detail: {
+                  value: true
+                }
+              });
+              window.dispatchEvent(event);
+            }
+          }
+        });
+
+        OneTrust.OnConsentChanged(OneTrustActiveGroups => {
+          // Note: OneTrust doesn't pass active groups as parameter
+          // Must read from global OnetrustActiveGroups variable instead
+          if (OnetrustActiveGroups.includes('3')) {
+            let event = new CustomEvent('UpdateCookieConsent', {
+              detail: {
+                value: true
+              }
+            });
+            window.dispatchEvent(event);
+          } else {
+            let event = new CustomEvent('UpdateCookieConsent', {
+              detail: {
+                value: false
+              }
+            });
+            window.dispatchEvent(event);
+          }
+        });
+      }</script><script type="text/javascript">var _elqQ = _elqQ || [];
+      _elqQ.push(['elqSetSiteId', '840']);
+      _elqQ.push(['elqTrackPageView']);
+      (function() {
+        function async_load() {
+          var s = document.createElement('script');
+          s.type = 'text/javascript';
+          s.async = true;
+          s.src = 'https://img.en25.com/i/elqCfg.min.js';
+          var x = document.getElementsByTagName('script')[0];
+          x.parentNode.insertBefore(s, x);
+        }
+        if (window.addEventListener) window.addEventListener('DOMContentLoaded', async_load, false);
+        else if (window.attachEvent) window.attachEvent('onload', async_load);
+      })();</script><script>function showBanner() {
+        const banner = document.getElementById('help-banner');
+        const topLinks = document.getElementById('content--top-links');
+        const containersFull = Array.from(document.querySelectorAll('.container--full-width'));
+        const bannerTop = '10.6rem';
+
+        if ('en-us' !== 'en-us') {
+          let bannerLink = document.getElementById('bannerLink');
+          let locUrl = window.location.href;
+          const enUsUrl = locUrl.replace(/\/[a-z]{2}-[a-z]{2}\//i, '/en-us/');
+          if (bannerLink) {
+            bannerLink.href = enUsUrl;
+            banner.style.display = 'block';
+            topLinks.style.top = bannerTop;
+            containersFull.forEach(el => {
+              if (el.id != 'tableau-help-article-header') {
+                el.style.top = bannerTop;
+              }
+            });
+          }
+        }
+      }
+
+      function getFooterLink(link) {
+        let lang_object = '';
+        let locString = '';
+
+        if ('en-us' !== 'en-us') {
+          lang_object = getLangObject();
+          locString = lang_object['code'];
+        }
+
+        // links for fr-ca locale are not consistent with the pattern other locales follow
+        const urlMap = {
+          contact:
+            'en-us' !== 'en-us'
+              ? 'https://www.salesforce.com/loc/form/contact/contactme/'.replace('loc', locString === 'ca' ? 'fr-ca' : locString)
+              : 'https://www.salesforce.com/company/contact-us/',
+
+          trust:
+            'en-us' !== 'en-us'
+              ? 'https://trust.salesforce.com/loc'.replace('loc', locString === 'ca' ? '' : locString === 'jp' ? 'ja' : locString)
+              : 'https://trust.salesforce.com/',
+
+          disclosure:
+            'en-us' !== 'en-us'
+              ? 'https://www.salesforce.com/loc/company/disclosure/'.replace('loc', locString === 'ca' ? '' : locString)
+              : 'https://www.salesforce.com/company/legal/disclosure/',
+
+          privacy:
+            'en-us' !== 'en-us'
+              ? 'https://www.salesforce.com/loc/company/privacy/'.replace('loc', locString)
+              : 'https://www.salesforce.com/company/legal/privacy/',
+
+          address:
+            'en-us' !== 'en-us'
+              ? lang_object['address']
+              : 'Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States.'
+        };
+
+        return urlMap[link] || '';
+      }
+
+      function getLangObject() {
+        let buildLang = 'en-us';
+
+        locMapping = {
+          'de-de': {
+            code: 'de',
+            address: 'Salesforce.com Germany GmbH, Erika-Mann-Str. 31, 80636 München, Deutschland.',
+            tel: 'Telefon: +49 800 0010546'
+          },
+          'en-gb': {
+            code: 'uk',
+            address: 'Salesforce UK Limited, village 9, floor 26 Salesforce Tower, 110 Bishopsgate, London, UK, EC2N 4AY.',
+            tel: 'Telephone: (+44) 800 086 8530'
+          },
+          'es-es': {
+            code: 'es',
+            address: 'Salesforce Spain S.L., Paseo de la Castellana 79, Planta 7ª, Madrid, Spain, 28046.',
+            tel: 'Teléfono: (+34) 800 300 229'
+          },
+          'fr-ca': {
+            code: 'ca',
+            address: 'Salesforce Canada Corporation. 10 Bay Street, Suite 400 Toronto, ON, M5J 2R8, Canada.',
+            tel: 'Tél: 1-833-996-2064'
+          },
+          'fr-fr': {
+            code: 'fr',
+            address: 'Salesforce.com France SAS – 3 Avenue Octave Gréard – 75007 Paris.',
+            tel: 'Tél: (+33) 8 05 08 21 31'
+          },
+          'it-it': {
+            code: 'it',
+            address: 'Salesforce.com Italy S.r.l., Piazza Filippo Meda 5, 20121 Milano (MI).',
+            tel: 'Telefono: (+39) 800 693 802'
+          },
+          'ja-jp': {
+            code: 'jp',
+            address: '株式会社セールスフォース・ジャパン 東京都千代田区丸の内1-1-3 日本生命丸の内ガーデンタワー（Salesforce Tower)',
+            tel: 'TEL: 0120-733-257 | 03-4222-1000'
+          },
+          'ko-kr': {
+            code: 'kr',
+            address: '일즈포스 코리아 서울특별시 영등포구 여의대로 108, 파크원타워2 28층 (세일즈포스) 07335',
+            tel: ' TEL : 080-822-1378 (솔루션 상담 문의) | 080-805-9651 (기술 지원 문의)'
+          },
+          'nl-nl': {
+            code: 'nl',
+            address: 'SFDC Netherlands BV, Gustav Mahlerlaan 2970, 1081 LA, Amsterdam, Nederland.',
+            tel: 'Telefoon: 0800 020 0431'
+          },
+          'pt-br': {
+            code: 'br',
+            address:
+              'Salesforce Brasil, Av. Jornalista Roberto Marinho, 85 – 14º andar – Cidade Monções, São Paulo – SP, 04575-000 Brasil.',
+            tel: ''
+          },
+          'sv-se': {
+            code: 'se',
+            address: 'SFDC SWEDEN AB, Klarabergsviadukten 63, 111 64 Stockholm, Sweden.',
+            tel: 'Telefon: (+46) 200285660'
+          },
+          'zh-cn': { code: 'cn', address: '', tel: '' },
+          'zh-tw': { code: 'tw', address: '', tel: '' },
+          'th-th': { code: 'th', address: '', tel: '' }
+        };
+
+        return locMapping[buildLang];
+      }
+
+      function getTrustUrl() {
+        let trustUrl = 'https://trust.salesforce.com/';
+
+        if ('en-us' !== 'en-us') {
+          let locString = getLocString();
+          trustUrl = 'https://trust.salesforce.com/loc';
+          return trustUrl.replace('loc', locString);
+        }
+      }
+
+      window.addEventListener('load', function() {
+        showBanner();
+        const FOOTER_LINKS = {
+          ADDRESS: 'address',
+          CONTACT: 'contact',
+          TRUST: 'trust',
+          DISCLOSURE: 'disclosure',
+          PRIVACY: 'privacy'
+        };
+
+        let privacyLinkElement = document.getElementById('privacyLink');
+        let disclosureLinkElement = document.getElementById('disclosureLink');
+        let trustLinkElement = document.getElementById('trustLink');
+        let contactLinkElement = document.getElementById('contactLink');
+        let choicesLinkElement = document.getElementById('choicesLink');
+        let sfAddressElement = document.getElementById('sfAddress');
+
+        if (privacyLinkElement) {
+          privacyLinkElement.href = getFooterLink(FOOTER_LINKS.PRIVACY);
+        }
+
+        if (disclosureLinkElement) {
+          disclosureLinkElement.href = getFooterLink(FOOTER_LINKS.DISCLOSURE);
+        }
+
+        if (trustLinkElement) {
+          trustLinkElement.href = getFooterLink(FOOTER_LINKS.TRUST);
+        }
+
+        if (contactLinkElement) {
+          contactLinkElement.href = getFooterLink(FOOTER_LINKS.CONTACT);
+        }
+
+        if (sfAddressElement) {
+          sfAddressElement.innerText = getFooterLink(FOOTER_LINKS.ADDRESS);
+        }
+
+        // Accessibility after click on MenuTree on page load set focus on topic title
+        const focusElementId = sessionStorage.getItem('focusElementId');
+        if (focusElementId) {
+          sessionStorage.removeItem('focusElementId');
+          const elemToFocus = document.getElementById(focusElementId);
+          if (elemToFocus) {
+            elemToFocus.focus();
+          }
+        }
+      });
+
+      function setFocus() {
+        let logo = document.getElementById('tableau-logo');
+        if (logo != null) {
+          logo.focus();
+        }
+      }</script><link href="./Resources/app.css?6dba1f5a6e5b112f575d" rel="stylesheet"></head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-BVCN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="app" class="wrapper"><a href="#main-content" class="skip-link">Skip to main content</a><header id="tableau-help-article-header" class="container--full-width quick-help-header"><div class="container--centered"><div class="header__mobile-menu quick-help-hidden"><menu-tree-toggle></menu-tree-toggle></div><div class="header__logo quick-help-hidden"><a id="tableau-logo" href="https://www.tableau.com/en-us/"><img src="./Resources/tableau-logo.png" class="header__logo__img" alt="Tableau"></a></div><div class="header__search"><search-header-help placeholder="Search"></search-header-help></div></div></header><div class="help--banner" id="help-banner"><banner text="For the latest information, please see the <a href='%3'>Tableau Help in English (US)</a>."></banner></div><div id="content--top-links" class="container--navigation-top quick-help-hidden content-only-hidden"><div id="help-subheader" class="subheader print-hidden"><div class="container--centered"><h1 class="heading--subheader">Tableau Desktop and Web Authoring Help</h1></div></div><div class="container--top-links"><div class="container--centered container--breadcrumbs"><div><breadcrumb-links-help></breadcrumb-links-help></div></div><div id="help-container-menu-headings" class="container--menu-headings"><nav class="nav-medium-screen"><menu-heading-links-static-help menu-title="In this article" :disabled="false" :headings="pageHeadings"></menu-heading-links-static-help></nav></div></div></div><div class="section--main container--full-width"><div class="container--centered"><nav class="nav-side nav-side--left" role="navigation"><menu-tree-help menu-title="Contents"></menu-tree-help></nav><article id="main-content" role="main" tabindex="-1"><h1 class="topic--title" id="topic-title" tabindex="-1">Embed Code for Custom Views</h1><div class="caption article__tags content-only-hidden quick-help-hidden"><span class="article__tags--applies-to">Applies to: Tableau Cloud, Tableau Server</span><br><span class="article__tags--role"> </span></div><div id="content-body">
+            <div id="mc-main-content">
+                <p class="note--tip">The embed code for  Tableau Server 2022.3 and later and <span class="mc-variable Variables.TabsProductOnline variable">Tableau Cloud</span> has changed to use the Embedding API v3. For current information on embedding custom views, see <a href="https://help.tableau.com/current/api/embedding_api/en-us/docs/embedding_api_custom_views.html">Embed Custom Views</a> in the <a href="https://help.tableau.com/current/api/embedding_api/en-us/index.html">Embedding API help</a>. The information in this topic is for prior versions of embedding (using the Tableau JavaScript API v1 and v2).</p>
+                <div is="accordion-item"><span slot="title">Embed custom views using prior versions of embedding</span><div slot="content">
+                        <p>When you embed a custom view of a workbook or sheet, the default view is determined by these factors:</p>
+                        <ul>
+                            <li>If the embed code URL specifically refers to a custom view, that view is displayed by default. </li>
+                            <li>If the embed code URL does not refer to a custom view, the Default custom view is displayed by default. </li>
+                            <li>If no Default custom view has been defined, the original view is displayed by default. </li>
+                        </ul>
+                        <p class="note"><b>Note:</b> To ensure the original view will be displayed by default in an embedded view, make sure the embed code URL for the name parameter does not explicitly refer to a custom view, and include the following <code>filter</code> parameter in the embed code: <code>&lt;param name='filter' value=':original_view=yes'/&gt;</code>.</p>
+                        <p>In the following example, the embed code will always display the original view of the Profit Analysis sheet in the Profit Analysis workbook, because the <code>filter</code> parameter is set to <code>:original_yes</code>, and the <code>name</code> parameter does not refer to a specific custom view in the URL for the sheet.</p><pre xml:space="preserve">&lt;script type='text/javascript' src='http://mysite.myserver.com/javascripts/api/viz_v1.js'&gt;&lt;/script&gt;
+  &lt;div class='tableauPlaceholder' style='width: 1496px; height: 749px;'&gt;
+  &lt;object class='tableauViz' width='1496' height='749' style='display:none;'&gt;
+  &lt;param name='host_url' value='http://mysite.myserver.com' /&gt;
+  &lt;param name='site_root' value='' /&gt;
+  &lt;param name='name' value='ProfitAnalysis/ProfitAnalysis' /&gt;
+  &lt;param name='tabs' value='yes' /&gt;
+  &lt;param name='toolbar' value='yes' /&gt;
+  &lt;param name='filter' value=':original_view=yes' /&gt;&lt;/object&gt;&lt;/div&gt;</pre>
+                        <p>In this example, the setting for the <code>name</code>parameter in this example specifically refers to the URL for a custom view named Furniture (in the Profit Analysis sheet in the Profit Analysis workbook).</p><pre xml:space="preserve">&lt;script type='text/javascript' src='http://mysite.myserver.com/javascripts/api/viz_v1.js'&gt;&lt;/script&gt;
+  &lt;div class='tableauPlaceholder' style='width: 1496px; height: 749px;'&gt;
+  &lt;object class='tableauViz' width='1496' height='749' style='display:none;'&gt;
+  &lt;param name='host_url' value='http://mysite.myserver.com' /&gt;
+  &lt;param name='site_root' value='' /&gt;
+  &lt;param name='name' value='ProfitAnalysis/ProfitAnalysis/Furniture' /&gt;
+  &lt;param name='tabs' value='yes' /&gt;
+  &lt;param name='toolbar' value='yes' /&gt;&lt;/object&gt;&lt;/div&gt;</pre>
+                        <p>In this example,  the <code>name</code> parameter does not refer to a specific custom view in the URL for the sheet, and the <code>original_view</code> parameter has not been specified. The embed code here will display the custom view that has been set to Default in the Profit Analysis sheet in the Profit Analysis workbook. However, if the original view is still the Default (no other custom view has been set to Default), then the original view will be displayed as the default view.</p><pre xml:space="preserve">&lt;script type='text/javascript' src='http://mysite.myserver.com/javascripts/api/viz_v1.js'&gt;&lt;/script&gt;
+  &lt;div class='tableauPlaceholder' style='width: 1496px; height: 749px;'&gt;
+  &lt;object class='tableauViz' width='1496' height='749' style='display:none;'&gt;
+  &lt;param name='host_url' value='http://mysite.myserver.com' /&gt;
+  &lt;param name='site_root' value='' /&gt;
+  &lt;param name='name' value='ProfitAnalysis/ProfitAnalysis' /&gt;
+  &lt;param name='tabs' value='yes' /&gt;
+  &lt;param name='toolbar' value='yes' /&gt;&lt;/object&gt;&lt;/div&gt;</pre>
+                    </div>
+                </div></div>
+        </div><div class="article__footer--back-to-top text--centered print-hidden quick-help-hidden"><a href="#" class="text--caps" onclick="setFocus()"><span class="icon--med icon--arrow-up"></span> Back to top</a></div><feedback-form :disabled="false" class="print-hidden content-only-hidden" helpful-question="Did this article solve your issue?" helpful-yes="Yes" helpful-no="No" comment-question="We value your feedback. Add comments here." submit-option="Send" cancel-option="Cancel" loading-text="Sending..."><span slot="submittedMessage">Thanks for your feedback!</span></feedback-form><d-s-c-feedback-form :disabled="false" class="print-hidden content-only-hidden quick-help-hidden" feedback-question="Did this article solve your issue?" feedback-subtitle="Let us know so we can improve!" helpful-yes="Yes" helpful-no="No" helpful-yes-aria-label="Yes, the article was helpful" helpful-no-aria-label="No, the article was not helpful" error-message="Please check at least 1 checkbox." thanks-positive-feedback="Thanks for the feedback! What made this article helpful?" thanks-negative-feedback="We're sorry to hear that. How can we improve this article?" feedback-yes-accurate="Contains accurate information" feedback-yes-comprehensive="Includes all of the information I need" feedback-yes-clear="Easy to understand with clear explanations and visuals" feedback-no-accurate="Contains inaccurate or outdated information" feedback-no-comprehensive="Missing important information" feedback-no-clear="Confusing or difficult to understand" feedback-no-descriptive="The article is OK, but I don't like how the product described works" feedback-something-else=" Something else" additional-feedback="Would you like to share any additional feedback?" submit-answers="Submit"><span slot="successfullySubmitted">Your feedback has been successfully submitted. Thank you!</span></d-s-c-feedback-form></article><nav class="nav-side nav-side--right"><menu-heading-links-scrollable-help menu-title="In this article" :disabled="false" :headings="pageHeadings"></menu-heading-links-scrollable-help></nav></div></div><feedback-button-floating tooltip="Send feedback" :disabled="false"></feedback-button-floating><footer class="container--full-width"><div class="container--centered"><div class="footer__links" aria-label="footer navigation"><ul><li><a href="https://www.salesforce.com/company/legal/" class="">Legal</a></li><li><a href="https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/" class="">Terms of Service</a></li><li><a id="privacyLink" class="">Privacy Information</a></li><li><a id="disclosureLink" class="">Responsible Disclosure</a></li><li><a id="trustLink" class="">Trust</a></li><li><a id="contactLink" class="">Contact</a></li><li><a href="#" data-ignore-geolocation="true" class="optanon-toggle-display">Cookie Preferences</a></li><li><a id="choicesLink" href="https://www.salesforce.com/form/other/privacy-request/" class="">Your Privacy Choices</a></li></ul></div><div class="footer__copyright"><copyright-notice salesforce-text="Salesforce, Inc." rights-reserved="All rights reserved." trademark-text="Various trademarks held by their respective owners. Salesforce, Inc."></copyright-notice><span id="sfAddress"></span></div></div></footer></div><script type="text/javascript">var TabHelp = TabHelp || {}; TabHelp.PageData = { name: "embed_code_custom_view.htm" };</script> <script type="text/javascript" src="./Resources/toc.js"></script><script type="text/javascript" src="./Resources/vendor.js?6dba1f5a6e5b112f575d"></script><script type="text/javascript" src="./Resources/app.js?6dba1f5a6e5b112f575d"></script></body></html>

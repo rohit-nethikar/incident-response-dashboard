@@ -1,0 +1,160 @@
+SheetInfo | Tableau Embedding API
+Tableau Embedding API
+Preparing search index...
+SheetInfo
+Interface SheetInfo
+interface
+SheetInfo
+{
+   �
+index
+:
+number
+;
+   �
+isActive
+:
+boolean
+;
+   �
+isHidden
+:
+boolean
+;
+   �
+name
+:
+string
+;
+   �
+sheetType
+:
+SheetType
+;
+   �
+size
+:
+SheetSize
+;
+   �
+url
+:
+string
+;
+   �
+workbook
+:
+Workbook
+;
+}
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:762
+Index
+Properties
+index
+is
+Active
+is
+Hidden
+name
+sheet
+Type
+size
+url
+workbook
+Properties
+Readonly
+index
+index
+:
+number
+Returns
+the index of the sheet within the published tabs. Note that hidden tabs are still counted in the ordering,
+as long as they are published.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:772
+Readonly
+is
+Active
+isActive
+:
+boolean
+Returns
+a value indicating whether the sheet is the currently active sheet.
+Due to a technical limitation, this will always return false if the object is a Worksheet instance that is part of a Dashboard.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:778
+Readonly
+is
+Hidden
+isHidden
+:
+boolean
+Returns
+a value indicating whether the sheet is hidden in the UI.
+Note that if the entire tab control is hidden, it does not affect the state of this flag.
+This sheet may still report that it is visible even when the tabs control is hidden.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:785
+Readonly
+name
+name
+:
+string
+Returns
+the name of the sheet.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:766
+Readonly
+sheet
+Type
+sheetType
+:
+SheetType
+Returns
+The type of the sheet. SheetType is an enum with the following values: WORKSHEET, DASHBOARD and STORY.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:790
+Readonly
+size
+size
+:
+SheetSize
+Returns
+The size information that the author specified when publishing the workbook.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:805
+Readonly
+url
+url
+:
+string
+Returns
+The URL for this sheet.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:800
+Readonly
+workbook
+workbook
+:
+Workbook
+Returns
+The Workbook to which this Sheet belongs.
+Defined in packages/api-external-contract-js/src/ExternalContract/Embedding/SheetInterfaces.ts:795
+Settings
+Member Visibility
+Protected
+Inherited
+External
+Theme
+OS
+Light
+Dark
+On This Page
+Properties
+index
+is
+Active
+is
+Hidden
+name
+sheet
+Type
+size
+url
+workbook
+Tableau Embedding API
+Loading...
+&copy; Copyright   Salesforce, Inc.  All rights reserved. Various trademarks held by their respective owners. Salesforce, Inc. Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States
